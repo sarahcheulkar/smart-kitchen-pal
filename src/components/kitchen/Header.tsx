@@ -1,4 +1,5 @@
-import { ChefHat, Sparkles, Zap } from "lucide-react";
+import { ChefHat, Sparkles, Zap, Info } from "lucide-react";
+import { Link } from "react-router-dom";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
@@ -31,7 +32,12 @@ export function Header() {
               </p>
             </div>
           </div>
-          <ThemeToggle />
+          <div className="flex items-center gap-3">
+            <Link to="/about" className="w-10 h-10 rounded-xl bg-primary-foreground/15 backdrop-blur-md flex items-center justify-center border border-primary-foreground/20 hover:bg-primary-foreground/25 transition-colors" title="About & Concepts">
+              <Info className="w-5 h-5 text-primary-foreground" />
+            </Link>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
 
