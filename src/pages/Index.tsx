@@ -96,10 +96,7 @@ const Index = () => {
               <IngredientsList ingredients={result.ingredients} />
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-6">
-              <NutritionPanel data={result.nutritionPerIngredient} />
-              <ExpiryTracker ingredients={result.ingredients.map(i => i.name)} />
-            </div>
+            <NutritionPanel data={result.nutritionPerIngredient} />
 
             <RecipeSection
               recipes={result.recipes}
