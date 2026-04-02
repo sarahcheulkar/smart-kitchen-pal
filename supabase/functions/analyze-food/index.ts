@@ -33,10 +33,18 @@ Schema:
       "name": "Recipe Name",
       "cuisine": "Indian|Italian|Chinese|Healthy|Mexican|American|Japanese|Mediterranean",
       "cookingTime": 15,
+      "servings": 4,
+      "difficulty": "Easy|Medium|Hard",
       "ingredients": ["ingredient1", "ingredient2"],
       "missingIngredients": ["missing1"],
       "matchScore": 0.0-1.0,
-      "instructions": "Brief cooking instructions in 2-3 sentences",
+      "instructions": "Brief 1-line summary",
+      "detailedSteps": [
+        "Step 1: Detailed instruction here",
+        "Step 2: Next detailed instruction",
+        "Step 3: Continue with details"
+      ],
+      "tips": "Pro tips for best results",
       "nutrition": {
         "calories": 300,
         "protein": 15,
