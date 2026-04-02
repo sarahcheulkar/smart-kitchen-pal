@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { Header } from "@/components/kitchen/Header";
+import { FloatingParticles } from "@/components/kitchen/FloatingParticles";
 import { ImageUpload } from "@/components/kitchen/ImageUpload";
 import { VoiceInput } from "@/components/kitchen/VoiceInput";
 import { CaptionDisplay } from "@/components/kitchen/CaptionDisplay";
@@ -13,8 +14,7 @@ import { AnalysisSkeleton } from "@/components/kitchen/AnalysisSkeleton";
 import { useAnalyzeFood } from "@/hooks/useAnalyzeFood";
 import { useFavorites } from "@/hooks/useFavorites";
 import { useVoiceInput } from "@/hooks/useVoiceInput";
-import { Button } from "@/components/ui/button";
-import { Sparkles } from "lucide-react";
+import { Sparkles, ChefHat, Utensils, Salad } from "lucide-react";
 
 const Index = () => {
   const [imageBase64, setImageBase64] = useState<string | null>(null);
@@ -47,26 +47,27 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <FloatingParticles count={15} />
       <Header />
 
-      <main className="max-w-6xl mx-auto px-4 py-8 space-y-8">
+      <main className="relative z-10 max-w-6xl mx-auto px-4 py-8 space-y-8">
         {/* Input Section */}
         <div className="grid lg:grid-cols-2 gap-6">
-          <div className="space-y-4">
+          <div className="space-y-5">
             <ImageUpload
               onImageSelected={handleImageSelected}
               isAnalyzing={isAnalyzing}
               previewUrl={previewUrl}
             />
             {(imageBase64 || transcript) && !isAnalyzing && (
-              <Button onClick={handleAnalyze} className="w-full gradient-warm text-primary-foreground border-0 h-12 text-base font-semibold" size="lg">
-                <Sparkles className="w-5 h-5 mr-2" />
+              <button onClick={handleAnalyze} className="btn-glow w-full h-14 text-base font-bold flex items-center justify-center gap-2 rounded-2xl">
+                <Sparkles className="w-5 h-5" />
                 Analyze & Get Recipes
-              </Button>
+              </button>
             )}
           </div>
-          <div className="space-y-4">
+          <div className="space-y-5">
             <VoiceInput
               isListening={isListening}
               transcript={transcript}
@@ -84,25 +85,22 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Loading State */}
+        {/* Loading */}
         {isAnalyzing && <AnalysisSkeleton />}
 
         {/* Results */}
         {result && !isAnalyzing && (
-          <div className="space-y-8 animate-fade-in-up">
-            {/* Caption & Ingredients */}
+          <div className="space-y-8">
             <div className="grid lg:grid-cols-2 gap-6">
               <CaptionDisplay caption={result.caption} />
               <IngredientsList ingredients={result.ingredients} />
             </div>
 
-            {/* Nutrition & Expiry */}
             <div className="grid lg:grid-cols-2 gap-6">
               <NutritionPanel data={result.nutritionPerIngredient} />
               <ExpiryTracker ingredients={result.ingredients.map(i => i.name)} />
             </div>
 
-            {/* Recipes */}
             <RecipeSection
               recipes={result.recipes}
               isFavorite={isFavorite}
@@ -115,16 +113,41 @@ const Index = () => {
         {/* Favorites */}
         <FavoritesSection favorites={favorites} onToggleFavorite={toggleFavorite} />
 
-        {/* Empty State */}
+        {/* Empty state */}
         {!result && !isAnalyzing && (
-          <div className="text-center py-16">
-            <div className="w-20 h-20 rounded-full gradient-warm mx-auto mb-4 flex items-center justify-center">
-              <Sparkles className="w-10 h-10 text-primary-foreground" />
+          <div className="text-center py-20 animate-fade-in-up">
+            <div className="relative inline-block mb-6">
+              <div className="w-24 h-24 rounded-3xl gradient-cosmic flex items-center justify-center shadow-[0_0_40px_hsl(var(--neon-purple)/0.3)]">
+                <ChefHat className="w-12 h-12 text-primary-foreground" />
+              </div>
+              <div className="absolute -top-2 -right-2 w-8 h-8 rounded-xl bg-neon-cyan/20 backdrop-blur-sm flex items-center justify-center border border-neon-cyan/30 animate-bounce">
+                <Utensils className="w-4 h-4 text-neon-cyan" />
+              </div>
+              <div className="absolute -bottom-1 -left-3 w-7 h-7 rounded-lg bg-neon-pink/20 backdrop-blur-sm flex items-center justify-center border border-neon-pink/30 animate-pulse">
+                <Salad className="w-3.5 h-3.5 text-neon-pink" />
+              </div>
             </div>
-            <h2 className="text-2xl font-display font-bold text-foreground mb-2">Ready to Cook Something Amazing?</h2>
-            <p className="text-muted-foreground max-w-md mx-auto">
-              Upload a photo of your ingredients or tell us what you have — our AI will suggest delicious recipes tailored just for you.
+            <h2 className="text-3xl font-display font-bold mb-3">
+              <span className="text-gradient">Ready to Cook Something Amazing?</span>
+            </h2>
+            <p className="text-muted-foreground max-w-lg mx-auto text-base leading-relaxed">
+              Upload a photo of your ingredients or speak what you have — our AI will detect ingredients, suggest recipes, and provide nutritional insights.
             </p>
+            <div className="flex items-center justify-center gap-6 mt-8">
+              {[
+                { icon: "📸", label: "Upload Image" },
+                { icon: "🎤", label: "Voice Input" },
+                { icon: "🤖", label: "AI Analysis" },
+                { icon: "🍳", label: "Get Recipes" },
+              ].map(({ icon, label }, i) => (
+                <div key={i} className="flex flex-col items-center gap-2 animate-fade-in-up" style={{ animationDelay: `${i * 150}ms` }}>
+                  <div className="w-14 h-14 rounded-2xl glass-card flex items-center justify-center text-2xl">
+                    {icon}
+                  </div>
+                  <span className="text-xs text-muted-foreground font-medium">{label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </main>
