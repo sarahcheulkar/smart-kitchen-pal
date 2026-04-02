@@ -1,4 +1,5 @@
-import { ChefHat, Sparkles, Zap } from "lucide-react";
+import { ChefHat, Sparkles, Zap, Info } from "lucide-react";
+import { Link } from "react-router-dom";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
