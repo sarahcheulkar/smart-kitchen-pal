@@ -69,6 +69,9 @@ Rules:
 - Detect ALL visible ingredients, even partially visible ones
 - Filter out detections with confidence below 0.4
 - Suggest 4-6 diverse recipes from different cuisines
+- Each recipe MUST have 5-8 detailed step-by-step instructions in detailedSteps
+- Include pro tips for each recipe
+- Include servings count and difficulty level
 - Rank recipes by ingredient match score
 - Be accurate with nutritional estimates
 - If voice ingredients are provided, merge them with detected ingredients`
