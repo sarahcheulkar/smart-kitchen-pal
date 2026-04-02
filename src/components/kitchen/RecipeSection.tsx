@@ -66,7 +66,7 @@ export function RecipeSection({ recipes, isFavorite, onToggleFavorite, onAddToSh
           <p className="text-muted-foreground/60 text-sm mt-1">Try adjusting cuisine or cooking time</p>
         </div>
       ) : (
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filtered.map((recipe, i) => (
             <RecipeCard
               key={i}
