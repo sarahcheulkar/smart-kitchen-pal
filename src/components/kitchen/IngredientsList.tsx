@@ -1,20 +1,15 @@
 import { Ingredient } from "@/types/kitchen";
-import { Tag, Check, Sparkles } from "lucide-react";
+import { Tag, Check, Sparkles, Leaf, Drumstick } from "lucide-react";
 
 interface IngredientsListProps {
   ingredients: Ingredient[];
 }
 
-const categoryConfig: Record<string, { gradient: string; text: string }> = {
-  vegetable: { gradient: "from-neon-green/20 to-neon-cyan/10", text: "text-neon-green" },
-  fruit: { gradient: "from-neon-orange/20 to-neon-pink/10", text: "text-neon-orange" },
-  protein: { gradient: "from-neon-pink/20 to-neon-purple/10", text: "text-neon-pink" },
-  dairy: { gradient: "from-neon-cyan/20 to-neon-purple/10", text: "text-neon-cyan" },
-  grain: { gradient: "from-neon-orange/15 to-neon-orange/5", text: "text-neon-orange" },
-  spice: { gradient: "from-neon-pink/20 to-neon-orange/10", text: "text-neon-pink" },
-  condiment: { gradient: "from-muted to-muted/50", text: "text-muted-foreground" },
-  other: { gradient: "from-muted to-muted/50", text: "text-muted-foreground" },
-};
+const nonVegCategories = ["protein", "dairy"];
+
+function isVeg(category: string): boolean {
+  return !nonVegCategories.includes(category);
+}
 
 export function IngredientsList({ ingredients }: IngredientsListProps) {
   return (
@@ -29,18 +24,33 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
           {ingredients.length} found
         </span>
       </h2>
+
+      {/* Legend */}
+      <div className="flex items-center gap-4 mb-3 text-xs text-muted-foreground">
+        <span className="flex items-center gap-1"><Leaf className="w-3 h-3 text-neon-green" /> Veg</span>
+        <span className="flex items-center gap-1"><Drumstick className="w-3 h-3 text-neon-orange" /> Non-Veg</span>
+      </div>
+
       <div className="flex flex-wrap gap-2">
         {ingredients.map((ing, i) => {
-          const config = categoryConfig[ing.category] || categoryConfig.other;
+          const veg = isVeg(ing.category);
           return (
             <div
               key={i}
-              className={`chip-ingredient bg-gradient-to-r ${config.gradient} animate-bounce-in`}
+              className={`chip-ingredient bg-gradient-to-r animate-bounce-in ${
+                veg
+                  ? "from-neon-green/20 to-neon-green/5 border-neon-green/30"
+                  : "from-neon-orange/20 via-neon-pink/10 to-neon-pink/5 border-neon-pink/30"
+              }`}
               style={{ animationDelay: `${i * 80}ms` }}
             >
-              <Check className={`w-3.5 h-3.5 ${config.text}`} />
+              {veg ? (
+                <Leaf className="w-3.5 h-3.5 text-neon-green" />
+              ) : (
+                <Drumstick className="w-3.5 h-3.5 text-neon-orange" />
+              )}
               <span className="text-foreground">{ing.name}</span>
-              <span className={`text-xs ${config.text} font-semibold`}>
+              <span className={`text-xs font-semibold ${veg ? "text-neon-green" : "text-neon-orange"}`}>
                 {Math.round(ing.confidence * 100)}%
               </span>
             </div>

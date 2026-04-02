@@ -9,7 +9,7 @@ import { RecipeSection } from "@/components/kitchen/RecipeSection";
 import { NutritionPanel } from "@/components/kitchen/NutritionPanel";
 import { ShoppingList } from "@/components/kitchen/ShoppingList";
 import { FavoritesSection } from "@/components/kitchen/FavoritesSection";
-import { ExpiryTracker } from "@/components/kitchen/ExpiryTracker";
+
 import { AnalysisSkeleton } from "@/components/kitchen/AnalysisSkeleton";
 import { useAnalyzeFood } from "@/hooks/useAnalyzeFood";
 import { useFavorites } from "@/hooks/useFavorites";
@@ -96,10 +96,7 @@ const Index = () => {
               <IngredientsList ingredients={result.ingredients} />
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-6">
-              <NutritionPanel data={result.nutritionPerIngredient} />
-              <ExpiryTracker ingredients={result.ingredients.map(i => i.name)} />
-            </div>
+            <NutritionPanel data={result.nutritionPerIngredient} />
 
             <RecipeSection
               recipes={result.recipes}

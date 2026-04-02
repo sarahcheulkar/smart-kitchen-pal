@@ -33,10 +33,18 @@ Schema:
       "name": "Recipe Name",
       "cuisine": "Indian|Italian|Chinese|Healthy|Mexican|American|Japanese|Mediterranean",
       "cookingTime": 15,
+      "servings": 4,
+      "difficulty": "Easy|Medium|Hard",
       "ingredients": ["ingredient1", "ingredient2"],
       "missingIngredients": ["missing1"],
       "matchScore": 0.0-1.0,
-      "instructions": "Brief cooking instructions in 2-3 sentences",
+      "instructions": "Brief 1-line summary",
+      "detailedSteps": [
+        "Step 1: Detailed instruction here",
+        "Step 2: Next detailed instruction",
+        "Step 3: Continue with details"
+      ],
+      "tips": "Pro tips for best results",
       "nutrition": {
         "calories": 300,
         "protein": 15,
@@ -61,6 +69,9 @@ Rules:
 - Detect ALL visible ingredients, even partially visible ones
 - Filter out detections with confidence below 0.4
 - Suggest 4-6 diverse recipes from different cuisines
+- Each recipe MUST have 5-8 detailed step-by-step instructions in detailedSteps
+- Include pro tips for each recipe
+- Include servings count and difficulty level
 - Rank recipes by ingredient match score
 - Be accurate with nutritional estimates
 - If voice ingredients are provided, merge them with detected ingredients`

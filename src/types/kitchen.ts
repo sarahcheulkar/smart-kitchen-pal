@@ -20,6 +20,10 @@ export interface Recipe {
   missingIngredients: string[];
   matchScore: number;
   instructions: string;
+  detailedSteps?: string[];
+  tips?: string;
+  servings?: number;
+  difficulty?: string;
   nutrition: NutritionInfo;
 }
 
