@@ -1,11 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>Lovable App</title>
-    <meta name="description" content="Lovable Generated Project" />
+    <title>Smart AI Kitchen Assistant</title>
+    <meta name="description" content="AI-powered kitchen assistant that detects ingredients from photos and suggests recipes" />
+    <meta name="author" content="Lovable" />
+    <script>
+      const theme = localStorage.getItem('theme');
+      if (theme === 'light') document.documentElement.classList.remove('dark');
+      else document.documentElement.classList.add('dark');
+    </script>
     <meta name="author" content="Lovable" />
 
     <!-- TODO: Update og:title to match your application name -->
