@@ -9,11 +9,12 @@ interface RecipeSectionProps {
   isFavorite: (name: string) => boolean;
   onToggleFavorite: (recipe: Recipe) => void;
   onAddToShoppingList: (items: string[]) => void;
+  onFeedback?: (recipeName: string, rating: number, cuisine: string, ingredients: string[]) => Promise<any>;
 }
 
 const cuisines = ["All", "Indian", "Italian", "Chinese", "Healthy", "Mexican", "American", "Japanese", "Mediterranean"];
 
-export function RecipeSection({ recipes, isFavorite, onToggleFavorite, onAddToShoppingList }: RecipeSectionProps) {
+export function RecipeSection({ recipes, isFavorite, onToggleFavorite, onAddToShoppingList, onFeedback }: RecipeSectionProps) {
   const [selectedCuisine, setSelectedCuisine] = useState("All");
   const [maxTime, setMaxTime] = useState(120);
 
@@ -74,6 +75,7 @@ export function RecipeSection({ recipes, isFavorite, onToggleFavorite, onAddToSh
               isFavorite={isFavorite(recipe.name)}
               onToggleFavorite={() => onToggleFavorite(recipe)}
               onAddToShoppingList={onAddToShoppingList}
+              onFeedback={onFeedback}
             />
           ))}
         </div>

@@ -7,15 +7,74 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Node dependencies & builds
+node_modules/
+dist/
+dist-ssr/
 *.local
 
-# Editor directories and files
+# Environment & Secrets (NEVER COMMIT SENSITIVE API KEYS)
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Python Virtual Environments
+venv/
+.venv/
+backend/.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Machine Learning Models & Weights (Large files)
+*.pt
+*.pth
+*.bin
+*.onnx
+*.safetensors
+weights/
+yolov8s-world.pt
+backend/.model_cache/
+.cache/
+
+# Databases & Vector Stores
+*.db
+*.sqlite3
+backend/db/chroma_store/
+backend/db/*.db
+
+# Editor & OS files
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*

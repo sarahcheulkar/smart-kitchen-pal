@@ -32,6 +32,11 @@ export function NutritionPanel({ data }: NutritionPanelProps) {
           <BarChart3 className="w-3.5 h-3.5 text-primary-foreground" />
         </div>
         Nutritional Analysis
+        {data.some(d => (d as any).source === "USDA FoodData Central") && (
+          <span className="ml-auto text-[10px] px-2 py-0.5 rounded-full bg-neon-green/10 text-neon-green border border-neon-green/20 font-sans font-normal">
+            ✓ USDA Verified
+          </span>
+        )}
       </h2>
 
       <div className="grid grid-cols-2 gap-3 mb-5">

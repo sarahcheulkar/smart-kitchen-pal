@@ -211,7 +211,7 @@
   /* Floating particles */
   .particle {
     @apply absolute rounded-full pointer-events-none;
-    animation: float-particle linear infinite;
+    /*animation: float-particle linear infinite;*/
   }
 
   /* Shimmer loading */

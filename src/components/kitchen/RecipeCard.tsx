@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { Recipe } from "@/types/kitchen";
-import { Clock, Heart, ShoppingCart, ChefHat, AlertCircle, Flame, X, Users, Gauge, Utensils } from "lucide-react";
+import { Clock, Heart, ShoppingCart, ChefHat, AlertCircle, Flame, X, Users, Gauge, Utensils, Database, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { FeedbackButtons } from "./FeedbackButtons";
 
 interface RecipeCardProps {
   recipe: Recipe;
   isFavorite: boolean;
   onToggleFavorite: () => void;
   onAddToShoppingList: (items: string[]) => void;
+  onFeedback?: (recipeName: string, rating: number, cuisine: string, ingredients: string[]) => Promise<any>;
 }
 
 const cuisineEmoji: Record<string, string> = {
@@ -17,7 +19,7 @@ const cuisineEmoji: Record<string, string> = {
   Mexican: "🇲🇽", American: "🇺🇸", Japanese: "🇯🇵", Mediterranean: "🫒",
 };
 
-export function RecipeCard({ recipe, isFavorite, onToggleFavorite, onAddToShoppingList }: RecipeCardProps) {
+export function RecipeCard({ recipe, isFavorite, onToggleFavorite, onAddToShoppingList, onFeedback }: RecipeCardProps) {
   const [open, setOpen] = useState(false);
   const matchPercent = Math.round(recipe.matchScore * 100);
 
@@ -186,8 +188,32 @@ export function RecipeCard({ recipe, isFavorite, onToggleFavorite, onAddToShoppi
             </div>
           )}
 
+          {/* Source & RLHF badges */}
+          <div className="flex items-center gap-2 flex-wrap pt-3 border-t border-border/30 mb-3">
+            {recipe.source && (
+              <span className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-neon-purple/10 text-neon-purple border border-neon-purple/20">
+                <Database className="w-3 h-3" /> {recipe.source}
+              </span>
+            )}
+            {recipe.preferenceBoost !== undefined && recipe.preferenceBoost !== 0 && (
+              <span className={`flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full border ${
+                recipe.preferenceBoost > 0
+                  ? "bg-neon-green/10 text-neon-green border-neon-green/20"
+                  : "bg-neon-pink/10 text-neon-pink border-neon-pink/20"
+              }`}>
+                <TrendingUp className="w-3 h-3" />
+                RLHF {recipe.preferenceBoost > 0 ? "+" : ""}{(recipe.preferenceBoost * 100).toFixed(0)}%
+              </span>
+            )}
+            {recipe.ragSimilarity !== undefined && (
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20">
+                RAG similarity: {(recipe.ragSimilarity * 100).toFixed(0)}%
+              </span>
+            )}
+          </div>
+
           {/* Nutrition */}
-          <div className="grid grid-cols-4 gap-2 pt-3 border-t border-border/30">
+          <div className="grid grid-cols-4 gap-2 mb-3">
             {[
               { label: "Cal", value: recipe.nutrition.calories, color: "text-neon-orange" },
               { label: "Protein", value: `${recipe.nutrition.protein}g`, color: "text-neon-green" },
@@ -200,6 +226,19 @@ export function RecipeCard({ recipe, isFavorite, onToggleFavorite, onAddToShoppi
               </div>
             ))}
           </div>
+
+          {/* RLHF Feedback */}
+          {onFeedback && (
+            <div className="flex items-center justify-between pt-3 border-t border-border/30">
+              <span className="text-xs text-muted-foreground">Help our AI learn your taste</span>
+              <FeedbackButtons
+                recipeName={recipe.name}
+                cuisine={recipe.cuisine}
+                ingredients={recipe.ingredients}
+                onFeedback={onFeedback}
+              />
+            </div>
+          )}
         </DialogContent>
       </Dialog>
     </>

@@ -9,8 +9,14 @@ import { RecipeSection } from "@/components/kitchen/RecipeSection";
 import { NutritionPanel } from "@/components/kitchen/NutritionPanel";
 import { ShoppingList } from "@/components/kitchen/ShoppingList";
 import { FavoritesSection } from "@/components/kitchen/FavoritesSection";
-
 import { AnalysisSkeleton } from "@/components/kitchen/AnalysisSkeleton";
+
+// ── New Deep Learning Components ──
+import { PipelineStatus } from "@/components/kitchen/PipelineStatus";
+import { VisionOutputPanel } from "@/components/kitchen/VisionOutputPanel";
+import { WasteTrackerPanel } from "@/components/kitchen/WasteTrackerPanel";
+import { DetectionOverlay } from "@/components/kitchen/DetectionOverlay";
+
 import { useAnalyzeFood } from "@/hooks/useAnalyzeFood";
 import { useFavorites } from "@/hooks/useFavorites";
 import { useVoiceInput } from "@/hooks/useVoiceInput";
@@ -21,7 +27,7 @@ const Index = () => {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [shoppingList, setShoppingList] = useState<string[]>([]);
 
-  const { isAnalyzing, result, analyze } = useAnalyzeFood();
+  const { isAnalyzing, result, analyze, sendFeedback } = useAnalyzeFood();
   const { favorites, toggleFavorite, isFavorite } = useFavorites();
   const { isListening, transcript, setTranscript, startListening, stopListening } = useVoiceInput();
 
@@ -52,6 +58,7 @@ const Index = () => {
       <Header />
 
       <main className="relative z-10 max-w-6xl mx-auto px-4 py-8 space-y-8">
+        
         {/* Input Section */}
         <div className="grid lg:grid-cols-2 gap-6">
           <div className="space-y-5">
@@ -67,6 +74,7 @@ const Index = () => {
               </button>
             )}
           </div>
+
           <div className="space-y-5">
             <VoiceInput
               isListening={isListening}
@@ -88,22 +96,57 @@ const Index = () => {
         {/* Loading */}
         {isAnalyzing && <AnalysisSkeleton />}
 
-        {/* Results */}
+        {/* ════════════════════════════════════════════ */}
+        {/* RESULTS — Deep Learning Pipeline Output     */}
+        {/* ════════════════════════════════════════════ */}
         {result && !isAnalyzing && (
           <div className="space-y-8">
+
+            {/* ── Pipeline Telemetry ── */}
+            {result.pipeline && (
+              <PipelineStatus pipeline={result.pipeline} />
+            )}
+
+            {/* ── Image with Florence-2 Bounding Boxes + Caption ── */}
             <div className="grid lg:grid-cols-2 gap-6">
-              <CaptionDisplay caption={result.caption} />
+              <div className="space-y-4">
+                {previewUrl && result.ingredients ? (
+                  <DetectionOverlay
+                    previewUrl={previewUrl}
+                    ingredients={result.ingredients}
+                  />
+                ) : (
+                  <CaptionDisplay caption={result.caption} />
+                )}
+                {previewUrl && <CaptionDisplay caption={result.caption} />}
+              </div>
               <IngredientsList ingredients={result.ingredients} />
             </div>
 
+            {/* ── Florence-2 Model Outputs ── */}
+            {result.vision && (result.vision.blip || result.vision.yolo) && (
+              <VisionOutputPanel
+                blip={result.vision.blip}
+                yolo={result.vision.yolo}
+              />
+            )}
+
+            {/* ── Nutrition (USDA-backed) ── */}
             <NutritionPanel data={result.nutritionPerIngredient} />
 
+            {/* ── Recipes (RAG-retrieved, RLHF-ranked) ── */}
             <RecipeSection
               recipes={result.recipes}
               isFavorite={isFavorite}
               onToggleFavorite={toggleFavorite}
               onAddToShoppingList={addToShoppingList}
+              onFeedback={sendFeedback}
             />
+
+            {/* ── Environmental Impact (Waste Tracker) ── */}
+            {result.wasteImpact && (
+              <WasteTrackerPanel impact={result.wasteImpact} />
+            )}
           </div>
         )}
 
@@ -124,25 +167,29 @@ const Index = () => {
                 <Salad className="w-3.5 h-3.5 text-neon-pink" />
               </div>
             </div>
+
             <h2 className="text-3xl font-display font-bold mb-3">
               <span className="text-gradient">Ready to Cook Something Amazing?</span>
             </h2>
-            <p className="text-muted-foreground max-w-lg mx-auto text-base leading-relaxed">
-              Upload a photo of your ingredients or speak what you have — our AI will detect ingredients, suggest recipes, and provide nutritional insights.
+
+            <p className="text-muted-foreground max-w-lg mx-auto text-base leading-relaxed mb-6">
+              Upload a photo of your ingredients or speak what you have — our deep learning pipeline will detect ingredients, suggest recipes, and provide real nutritional insights.
             </p>
-            <div className="flex items-center justify-center gap-6 mt-8">
+
+            {/* DL Pipeline info */}
+            <div className="flex flex-wrap justify-center gap-2 max-w-md mx-auto">
               {[
-                { icon: "📸", label: "Upload Image" },
-                { icon: "🎤", label: "Voice Input" },
-                { icon: "🤖", label: "AI Analysis" },
-                { icon: "🍳", label: "Get Recipes" },
-              ].map(({ icon, label }, i) => (
-                <div key={i} className="flex flex-col items-center gap-2 animate-fade-in-up" style={{ animationDelay: `${i * 150}ms` }}>
-                  <div className="w-14 h-14 rounded-2xl glass-card flex items-center justify-center text-2xl">
-                    {icon}
-                  </div>
-                  <span className="text-xs text-muted-foreground font-medium">{label}</span>
-                </div>
+                { label: "Florence-2", desc: "Vision & Detection" },
+                { label: "Whisper", desc: "Audio" },
+                { label: "BGE RAG", desc: "Recipes" },
+                { label: "USDA", desc: "Nutrition" },
+                { label: "RLHF", desc: "Learning" },
+                { label: "FLUX", desc: "Image Gen" },
+              ].map(({ label, desc }) => (
+                <span key={label} className="px-3 py-1.5 rounded-full bg-muted/30 border border-border/30 text-xs">
+                  <span className="font-bold text-foreground">{label}</span>
+                  <span className="text-muted-foreground ml-1">{desc}</span>
+                </span>
               ))}
             </div>
           </div>

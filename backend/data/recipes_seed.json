@@ -1,0 +1,606 @@
+[
+  {
+    "name": "Classic Margherita Pizza",
+    "cuisine": "Italian",
+    "cooking_time": 25,
+    "servings": 4,
+    "difficulty": "Easy",
+    "description": "Traditional Neapolitan pizza with fresh mozzarella, basil, and San Marzano tomato sauce",
+    "ingredients": ["pizza dough", "mozzarella cheese", "tomato sauce", "fresh basil", "olive oil", "salt"],
+    "steps": [
+      "Preheat oven to 475°F (245°C) with a pizza stone or inverted baking sheet.",
+      "Stretch the dough into a 12-inch round on a floured surface.",
+      "Spread a thin layer of tomato sauce, leaving a 1-inch border.",
+      "Tear mozzarella into chunks and distribute evenly over the sauce.",
+      "Drizzle with olive oil and season with salt.",
+      "Bake for 10-12 minutes until the crust is golden and cheese is bubbly.",
+      "Top with fresh basil leaves and serve immediately."
+    ],
+    "tips": "For the best crust, let the dough come to room temperature 30 minutes before stretching. Don't overload with toppings.",
+    "nutrition": {"calories": 280, "protein": 12, "fat": 10, "carbs": 36, "fiber": 2}
+  },
+  {
+    "name": "Chicken Tikka Masala",
+    "cuisine": "Indian",
+    "cooking_time": 45,
+    "servings": 4,
+    "difficulty": "Medium",
+    "description": "Tender chicken pieces in a rich, creamy tomato-based curry sauce with aromatic spices",
+    "ingredients": ["chicken breast", "yogurt", "tomato", "onion", "garlic", "ginger", "cream", "garam masala", "turmeric", "cumin", "coriander", "chili powder", "oil", "salt"],
+    "steps": [
+      "Marinate chicken in yogurt, turmeric, chili powder, and salt for at least 30 minutes.",
+      "Grill or pan-sear the marinated chicken until charred. Set aside.",
+      "Sauté onions until golden, then add garlic and ginger paste.",
+      "Add tomato purée and cook for 10 minutes until oil separates.",
+      "Add garam masala, cumin, and coriander. Cook for 2 minutes.",
+      "Pour in cream, stir well, and simmer for 5 minutes.",
+      "Add the grilled chicken pieces and simmer for 10 more minutes.",
+      "Garnish with fresh coriander and serve with naan or rice."
+    ],
+    "tips": "Marinating overnight intensifies the flavor. Use kasuri methi (dried fenugreek leaves) for authentic restaurant taste.",
+    "nutrition": {"calories": 420, "protein": 35, "fat": 22, "carbs": 18, "fiber": 3}
+  },
+  {
+    "name": "Egg Fried Rice",
+    "cuisine": "Chinese",
+    "cooking_time": 15,
+    "servings": 2,
+    "difficulty": "Easy",
+    "description": "Quick wok-fried rice with scrambled eggs, scallions, and soy sauce",
+    "ingredients": ["rice", "eggs", "soy sauce", "scallions", "garlic", "sesame oil", "vegetable oil", "salt", "pepper"],
+    "steps": [
+      "Use day-old rice for the best texture. Break up any clumps.",
+      "Heat vegetable oil in a wok over high heat until smoking.",
+      "Scramble the eggs quickly, then push to the side.",
+      "Add garlic and stir-fry for 10 seconds.",
+      "Add rice and toss vigorously for 2-3 minutes.",
+      "Drizzle soy sauce along the edge of the wok.",
+      "Add scallions and sesame oil, toss once more, and serve."
+    ],
+    "tips": "The key is HIGH heat and a dry wok. Day-old refrigerated rice gives the best wok hei (smoky flavor).",
+    "nutrition": {"calories": 350, "protein": 14, "fat": 12, "carbs": 48, "fiber": 1}
+  },
+  {
+    "name": "Avocado Toast with Poached Eggs",
+    "cuisine": "Healthy",
+    "cooking_time": 15,
+    "servings": 2,
+    "difficulty": "Easy",
+    "description": "Creamy mashed avocado on sourdough toast topped with perfectly poached eggs",
+    "ingredients": ["bread", "avocado", "eggs", "lemon", "chili flakes", "salt", "pepper", "olive oil"],
+    "steps": [
+      "Toast the bread until golden and crispy.",
+      "Mash avocado with lemon juice, salt, and pepper.",
+      "Bring a pot of water to a gentle simmer. Add a splash of vinegar.",
+      "Create a vortex and gently drop in the egg. Poach for 3-4 minutes.",
+      "Spread mashed avocado on toast.",
+      "Top with the poached egg.",
+      "Sprinkle with chili flakes and drizzle with olive oil."
+    ],
+    "tips": "Fresh eggs poach better. The vinegar helps the egg white coagulate quickly.",
+    "nutrition": {"calories": 320, "protein": 15, "fat": 20, "carbs": 24, "fiber": 7}
+  },
+  {
+    "name": "Pasta Aglio e Olio",
+    "cuisine": "Italian",
+    "cooking_time": 20,
+    "servings": 4,
+    "difficulty": "Easy",
+    "description": "Simple Roman pasta with garlic, olive oil, chili flakes, and parsley",
+    "ingredients": ["spaghetti", "garlic", "olive oil", "chili flakes", "parsley", "parmesan", "salt"],
+    "steps": [
+      "Cook spaghetti in salted water until al dente. Reserve 1 cup pasta water.",
+      "Thinly slice 6-8 garlic cloves.",
+      "Heat olive oil in a large pan over medium-low heat.",
+      "Add garlic and chili flakes, cook until garlic is golden (not brown!).",
+      "Add drained pasta to the pan with 1/2 cup pasta water.",
+      "Toss vigorously until the sauce emulsifies and coats the pasta.",
+      "Add chopped parsley, toss, and serve with parmesan."
+    ],
+    "tips": "This dish is all about garlic cooked perfectly — golden, not burnt. The pasta water is essential for creating the silky sauce.",
+    "nutrition": {"calories": 380, "protein": 11, "fat": 14, "carbs": 52, "fiber": 3}
+  },
+  {
+    "name": "Chicken Biryani",
+    "cuisine": "Indian",
+    "cooking_time": 60,
+    "servings": 6,
+    "difficulty": "Hard",
+    "description": "Fragrant layered rice dish with spiced chicken, saffron, and caramelized onions",
+    "ingredients": ["chicken", "basmati rice", "onion", "yogurt", "tomato", "garlic", "ginger", "saffron", "milk", "ghee", "bay leaves", "cardamom", "cinnamon", "cloves", "cumin", "coriander", "chili powder", "turmeric", "mint", "cilantro", "salt"],
+    "steps": [
+      "Marinate chicken with yogurt, ginger-garlic paste, and all spices for 2 hours.",
+      "Soak basmati rice for 30 minutes, then parboil until 70% cooked. Drain.",
+      "Deep-fry thinly sliced onions until golden brown (birista). Reserve.",
+      "Cook the marinated chicken in ghee until 80% done.",
+      "Layer: chicken on bottom, then rice, then fried onions, saffron milk, mint, cilantro.",
+      "Repeat layers. Seal the pot with dough or tight-fitting lid.",
+      "Cook on lowest heat (dum) for 25 minutes.",
+      "Rest for 5 minutes, then gently mix layers and serve with raita."
+    ],
+    "tips": "The dum cooking (slow steam) is crucial. Don't open the lid during cooking. Use aged basmati for the best elongation.",
+    "nutrition": {"calories": 520, "protein": 30, "fat": 18, "carbs": 58, "fiber": 3}
+  },
+  {
+    "name": "Tacos al Pastor",
+    "cuisine": "Mexican",
+    "cooking_time": 40,
+    "servings": 4,
+    "difficulty": "Medium",
+    "description": "Marinated pork tacos with pineapple, onion, cilantro, and salsa verde",
+    "ingredients": ["pork", "pineapple", "onion", "cilantro", "corn tortillas", "lime", "chili", "garlic", "cumin", "oregano", "vinegar", "oil", "salt"],
+    "steps": [
+      "Blend dried chilies, garlic, cumin, oregano, vinegar, and pineapple juice into a marinade.",
+      "Marinate thinly sliced pork for at least 2 hours (overnight is best).",
+      "Grill or pan-sear the pork in batches over high heat until charred.",
+      "Grill pineapple slices until caramelized.",
+      "Dice the pork and pineapple into small pieces.",
+      "Warm corn tortillas on a dry skillet.",
+      "Assemble: tortilla, pork, pineapple, diced onion, cilantro, and lime juice."
+    ],
+    "tips": "The key is the char on the pork. If you have a vertical rotisserie, use it for authentic trompo-style cooking.",
+    "nutrition": {"calories": 380, "protein": 28, "fat": 15, "carbs": 35, "fiber": 4}
+  },
+  {
+    "name": "Japanese Miso Soup",
+    "cuisine": "Japanese",
+    "cooking_time": 15,
+    "servings": 4,
+    "difficulty": "Easy",
+    "description": "Traditional dashi-based soup with silken tofu, wakame seaweed, and scallions",
+    "ingredients": ["miso paste", "tofu", "wakame seaweed", "scallions", "dashi stock", "water"],
+    "steps": [
+      "Bring dashi stock to a gentle simmer (never boil miso!).",
+      "Rehydrate wakame in warm water for 5 minutes, then drain.",
+      "Cut silken tofu into small cubes.",
+      "Dissolve miso paste in a ladle of warm broth, then stir into the pot.",
+      "Add tofu and wakame. Heat gently for 2 minutes.",
+      "Serve immediately, garnished with sliced scallions."
+    ],
+    "tips": "Never boil miso — it destroys the beneficial probiotics and dulls the flavor. Add miso last, off the heat.",
+    "nutrition": {"calories": 80, "protein": 6, "fat": 3, "carbs": 8, "fiber": 2}
+  },
+  {
+    "name": "Greek Salad",
+    "cuisine": "Mediterranean",
+    "cooking_time": 10,
+    "servings": 4,
+    "difficulty": "Easy",
+    "description": "Fresh Mediterranean salad with tomatoes, cucumber, olives, feta, and oregano",
+    "ingredients": ["tomato", "cucumber", "red onion", "olives", "feta cheese", "olive oil", "oregano", "salt", "pepper", "lemon"],
+    "steps": [
+      "Cut tomatoes into wedges and cucumber into half-moons.",
+      "Thinly slice red onion into rings.",
+      "Combine vegetables in a large bowl.",
+      "Add Kalamata olives.",
+      "Crumble feta cheese over the top (don't mix in).",
+      "Drizzle generously with extra-virgin olive oil.",
+      "Season with dried oregano, salt, pepper, and a squeeze of lemon."
+    ],
+    "tips": "Use the ripest tomatoes you can find. Traditional Greek salad has no lettuce — just chunky vegetables and a slab of feta.",
+    "nutrition": {"calories": 220, "protein": 7, "fat": 18, "carbs": 10, "fiber": 3}
+  },
+  {
+    "name": "Beef Stir-Fry with Broccoli",
+    "cuisine": "Chinese",
+    "cooking_time": 20,
+    "servings": 3,
+    "difficulty": "Easy",
+    "description": "Tender beef strips with crisp broccoli in a savory garlic-ginger sauce",
+    "ingredients": ["beef", "broccoli", "garlic", "ginger", "soy sauce", "oyster sauce", "cornstarch", "sesame oil", "vegetable oil", "sugar", "rice"],
+    "steps": [
+      "Slice beef thinly against the grain. Marinate with soy sauce, cornstarch, and sesame oil.",
+      "Blanch broccoli florets in boiling water for 2 minutes. Shock in ice water.",
+      "Heat wok until smoking. Sear beef in batches (don't overcrowd). Remove.",
+      "Add garlic and ginger to the wok. Stir-fry 30 seconds.",
+      "Add broccoli, then the sauce (soy sauce, oyster sauce, sugar, water).",
+      "Return beef to the wok. Toss everything together for 1 minute.",
+      "Thicken with a cornstarch slurry if needed. Serve over rice."
+    ],
+    "tips": "Slice beef while it's partially frozen for thinner, more tender strips. Velveting (marinating with cornstarch) keeps the beef silky.",
+    "nutrition": {"calories": 380, "protein": 32, "fat": 16, "carbs": 28, "fiber": 4}
+  },
+  {
+    "name": "Spinach and Ricotta Stuffed Shells",
+    "cuisine": "Italian",
+    "cooking_time": 50,
+    "servings": 6,
+    "difficulty": "Medium",
+    "description": "Jumbo pasta shells filled with creamy ricotta and spinach, baked in marinara",
+    "ingredients": ["jumbo pasta shells", "ricotta cheese", "spinach", "mozzarella cheese", "parmesan", "egg", "garlic", "marinara sauce", "basil", "nutmeg", "salt", "pepper"],
+    "steps": [
+      "Cook pasta shells until just al dente (they'll finish cooking in the oven).",
+      "Sauté spinach with garlic until wilted. Squeeze out excess moisture.",
+      "Mix ricotta, spinach, half the mozzarella, parmesan, egg, nutmeg, salt, and pepper.",
+      "Spread a layer of marinara on the bottom of a baking dish.",
+      "Fill each shell with the ricotta mixture and arrange in the dish.",
+      "Cover with remaining marinara and top with mozzarella.",
+      "Bake at 375°F (190°C) for 25-30 minutes until bubbly and golden."
+    ],
+    "tips": "Drain the ricotta and squeeze the spinach thoroughly — excess moisture makes the shells soggy.",
+    "nutrition": {"calories": 420, "protein": 22, "fat": 18, "carbs": 42, "fiber": 4}
+  },
+  {
+    "name": "Palak Paneer",
+    "cuisine": "Indian",
+    "cooking_time": 35,
+    "servings": 4,
+    "difficulty": "Medium",
+    "description": "Creamy spinach curry with cubes of paneer cheese in aromatic spices",
+    "ingredients": ["paneer", "spinach", "onion", "tomato", "garlic", "ginger", "green chili", "cream", "cumin", "garam masala", "turmeric", "oil", "salt"],
+    "steps": [
+      "Blanch spinach in boiling water for 2 minutes. Ice bath, then blend into a smooth purée.",
+      "Pan-fry paneer cubes until golden. Set aside.",
+      "Sauté cumin seeds, then add onion, garlic, ginger, and green chili.",
+      "Add diced tomato and cook until soft.",
+      "Add turmeric and garam masala, cook 2 minutes.",
+      "Pour in the spinach purée and simmer for 10 minutes.",
+      "Add cream and the fried paneer. Simmer 5 more minutes.",
+      "Serve hot with naan or rice."
+    ],
+    "tips": "Blanching and ice-bathing the spinach keeps it vibrant green. Adding a pinch of sugar balances the bitterness.",
+    "nutrition": {"calories": 350, "protein": 18, "fat": 24, "carbs": 14, "fiber": 5}
+  },
+  {
+    "name": "Banana Pancakes",
+    "cuisine": "American",
+    "cooking_time": 20,
+    "servings": 2,
+    "difficulty": "Easy",
+    "description": "Fluffy pancakes made with ripe bananas, served with maple syrup and berries",
+    "ingredients": ["banana", "flour", "eggs", "milk", "sugar", "baking powder", "butter", "vanilla extract", "salt"],
+    "steps": [
+      "Mash ripe bananas until smooth.",
+      "Whisk eggs, milk, melted butter, and vanilla in a bowl.",
+      "In another bowl, combine flour, sugar, baking powder, and salt.",
+      "Fold wet ingredients into dry — don't overmix (lumps are okay!).",
+      "Fold in the mashed banana.",
+      "Cook on a buttered griddle over medium heat. Flip when bubbles form on the surface.",
+      "Serve stacked with maple syrup, fresh berries, and a pat of butter."
+    ],
+    "tips": "The riper the banana, the sweeter and more flavorful. Overmixing develops gluten and makes tough pancakes.",
+    "nutrition": {"calories": 320, "protein": 10, "fat": 12, "carbs": 44, "fiber": 3}
+  },
+  {
+    "name": "Tom Yum Soup",
+    "cuisine": "Japanese",
+    "cooking_time": 25,
+    "servings": 4,
+    "difficulty": "Medium",
+    "description": "Hot and sour Thai soup with shrimp, lemongrass, galangal, and kaffir lime",
+    "ingredients": ["shrimp", "mushroom", "tomato", "lemongrass", "galangal", "kaffir lime leaves", "chili", "lime", "fish sauce", "sugar", "cilantro", "coconut milk"],
+    "steps": [
+      "Bring water or stock to a boil. Add lemongrass, galangal, and kaffir lime leaves.",
+      "Simmer for 10 minutes to infuse the aromatics.",
+      "Add mushrooms and tomatoes. Cook 3 minutes.",
+      "Add shrimp and cook until pink (2-3 minutes).",
+      "Season with fish sauce, lime juice, sugar, and chili paste.",
+      "Stir in coconut milk for a creamy version (tom kha style).",
+      "Garnish with fresh cilantro and serve immediately."
+    ],
+    "tips": "Don't eat the lemongrass and galangal pieces — they're for flavoring only. Adjust the chili and lime to your taste.",
+    "nutrition": {"calories": 180, "protein": 20, "fat": 8, "carbs": 10, "fiber": 2}
+  },
+  {
+    "name": "Caesar Salad",
+    "cuisine": "American",
+    "cooking_time": 15,
+    "servings": 4,
+    "difficulty": "Easy",
+    "description": "Classic Caesar with romaine, homemade dressing, croutons, and shaved parmesan",
+    "ingredients": ["romaine lettuce", "parmesan", "bread", "garlic", "lemon", "olive oil", "egg", "anchovy", "mustard", "salt", "pepper"],
+    "steps": [
+      "Make croutons: cube bread, toss with olive oil and garlic, bake at 400°F until golden.",
+      "Make dressing: blend anchovy, garlic, lemon juice, mustard, egg yolk, and olive oil.",
+      "Wash and dry romaine, tear into pieces.",
+      "Toss romaine with dressing until evenly coated.",
+      "Add croutons and toss gently.",
+      "Shave parmesan over the top with a vegetable peeler.",
+      "Season with black pepper and serve immediately."
+    ],
+    "tips": "Use the inner hearts of romaine for the best crunch. The dressing emulsifies better if ingredients are at room temperature.",
+    "nutrition": {"calories": 250, "protein": 10, "fat": 18, "carbs": 14, "fiber": 3}
+  },
+  {
+    "name": "Vegetable Pad Thai",
+    "cuisine": "Japanese",
+    "cooking_time": 25,
+    "servings": 3,
+    "difficulty": "Medium",
+    "description": "Rice noodles stir-fried with tofu, bean sprouts, peanuts, and tamarind sauce",
+    "ingredients": ["rice noodles", "tofu", "eggs", "bean sprouts", "scallions", "peanuts", "garlic", "tamarind paste", "fish sauce", "sugar", "lime", "chili flakes", "oil"],
+    "steps": [
+      "Soak rice noodles in warm water for 20 minutes until pliable. Drain.",
+      "Mix tamarind paste, fish sauce, and sugar for the sauce.",
+      "Press and cube tofu. Pan-fry until golden and crispy.",
+      "Scramble eggs in the wok. Push to the side.",
+      "Stir-fry garlic, then add noodles and sauce. Toss for 2 minutes.",
+      "Add bean sprouts and scallions. Toss for 30 seconds.",
+      "Plate with crushed peanuts, lime wedge, and chili flakes."
+    ],
+    "tips": "Don't over-soak the noodles or they'll turn mushy. The wok should be screaming hot for the best results.",
+    "nutrition": {"calories": 400, "protein": 16, "fat": 14, "carbs": 54, "fiber": 4}
+  },
+  {
+    "name": "Shakshuka",
+    "cuisine": "Mediterranean",
+    "cooking_time": 30,
+    "servings": 4,
+    "difficulty": "Easy",
+    "description": "Eggs poached in a spiced tomato and pepper sauce, served with crusty bread",
+    "ingredients": ["eggs", "tomato", "bell pepper", "onion", "garlic", "cumin", "paprika", "chili flakes", "olive oil", "feta cheese", "parsley", "bread", "salt"],
+    "steps": [
+      "Sauté diced onion and bell pepper in olive oil until softened.",
+      "Add garlic, cumin, paprika, and chili flakes. Cook 1 minute.",
+      "Add crushed tomatoes and simmer for 15 minutes until thickened.",
+      "Make wells in the sauce and crack eggs into them.",
+      "Cover and cook on medium-low for 5-7 minutes until whites are set but yolks are runny.",
+      "Crumble feta cheese over the top.",
+      "Garnish with fresh parsley and serve in the skillet with crusty bread."
+    ],
+    "tips": "Keep the heat low once you add the eggs — too much heat will overcook the yolks. Serve straight from the pan.",
+    "nutrition": {"calories": 280, "protein": 16, "fat": 16, "carbs": 20, "fiber": 4}
+  },
+  {
+    "name": "Chicken Quesadillas",
+    "cuisine": "Mexican",
+    "cooking_time": 20,
+    "servings": 4,
+    "difficulty": "Easy",
+    "description": "Crispy tortillas filled with seasoned chicken, melted cheese, peppers, and salsa",
+    "ingredients": ["chicken", "flour tortillas", "cheddar cheese", "mozzarella cheese", "bell pepper", "onion", "cumin", "chili powder", "oil", "sour cream", "salsa", "salt"],
+    "steps": [
+      "Season chicken with cumin, chili powder, and salt. Cook until done, then shred.",
+      "Sauté bell pepper and onion until slightly charred.",
+      "Layer cheese, chicken, and vegetables on half a tortilla. Fold over.",
+      "Cook in a skillet with a little oil over medium heat.",
+      "Press down gently. Flip when golden and crispy (3-4 minutes per side).",
+      "Cut into triangles.",
+      "Serve with sour cream, salsa, and guacamole."
+    ],
+    "tips": "Use a mix of cheddar and mozzarella for the best melt. Don't overfill or they'll be hard to flip.",
+    "nutrition": {"calories": 450, "protein": 30, "fat": 22, "carbs": 34, "fiber": 2}
+  },
+  {
+    "name": "Mushroom Risotto",
+    "cuisine": "Italian",
+    "cooking_time": 40,
+    "servings": 4,
+    "difficulty": "Medium",
+    "description": "Creamy Arborio rice with mixed mushrooms, parmesan, and white wine",
+    "ingredients": ["arborio rice", "mushrooms", "onion", "garlic", "white wine", "parmesan", "butter", "olive oil", "vegetable stock", "thyme", "salt", "pepper"],
+    "steps": [
+      "Heat stock in a saucepan and keep at a gentle simmer.",
+      "Sauté mushrooms in butter until golden. Season and set aside.",
+      "In the same pan, cook onion and garlic in olive oil until translucent.",
+      "Add rice and toast for 2 minutes until edges become translucent.",
+      "Deglaze with white wine and stir until absorbed.",
+      "Add stock one ladle at a time, stirring frequently, waiting until each is absorbed.",
+      "Continue for 18-20 minutes until rice is creamy and al dente.",
+      "Fold in mushrooms, butter, and parmesan. Rest 2 minutes before serving."
+    ],
+    "tips": "Never wash Arborio rice — the starch is what makes risotto creamy. Keep stirring and adding stock gradually.",
+    "nutrition": {"calories": 400, "protein": 12, "fat": 16, "carbs": 50, "fiber": 3}
+  },
+  {
+    "name": "Hummus with Pita",
+    "cuisine": "Mediterranean",
+    "cooking_time": 10,
+    "servings": 6,
+    "difficulty": "Easy",
+    "description": "Ultra-smooth chickpea dip with tahini, lemon, and garlic, served with warm pita",
+    "ingredients": ["chickpeas", "tahini", "lemon", "garlic", "olive oil", "cumin", "salt", "pita bread", "paprika"],
+    "steps": [
+      "Drain chickpeas. For ultra-smooth hummus, remove the skins by rubbing between towels.",
+      "Blend tahini and lemon juice first for 2 minutes until light and fluffy.",
+      "Add chickpeas, garlic, cumin, and salt. Blend for 3-4 minutes.",
+      "Stream in ice water while blending until desired consistency.",
+      "Taste and adjust lemon, salt, and garlic.",
+      "Plate in a shallow bowl, create a swirl, drizzle with olive oil and paprika.",
+      "Serve with warm pita bread, vegetables, or falafel."
+    ],
+    "tips": "The secret is blending tahini and lemon FIRST — it creates an ultra-creamy base. Ice water makes it fluffier than olive oil.",
+    "nutrition": {"calories": 180, "protein": 8, "fat": 10, "carbs": 18, "fiber": 5}
+  },
+  {
+    "name": "Korean Bibimbap",
+    "cuisine": "Japanese",
+    "cooking_time": 35,
+    "servings": 2,
+    "difficulty": "Medium",
+    "description": "Mixed rice bowl with seasoned vegetables, beef, fried egg, and gochujang sauce",
+    "ingredients": ["rice", "beef", "spinach", "carrot", "zucchini", "mushrooms", "bean sprouts", "eggs", "gochujang", "sesame oil", "soy sauce", "garlic", "sesame seeds", "oil"],
+    "steps": [
+      "Cook rice. For dolsot (stone pot) style, cook in a hot stone bowl for crispy bottom.",
+      "Marinate beef in soy sauce, sesame oil, garlic, and sugar. Pan-sear quickly.",
+      "Blanch and season each vegetable separately: spinach with sesame oil, carrots with salt, etc.",
+      "Fry an egg sunny-side up with crispy edges.",
+      "Arrange rice in a bowl. Top with vegetables, beef, and egg in sections.",
+      "Add a generous spoonful of gochujang sauce.",
+      "Mix everything together thoroughly before eating. Top with sesame seeds."
+    ],
+    "tips": "The beauty is in the presentation — arrange each topping neatly in its own section. Mix vigorously before eating!",
+    "nutrition": {"calories": 520, "protein": 28, "fat": 18, "carbs": 62, "fiber": 5}
+  },
+  {
+    "name": "French Omelette",
+    "cuisine": "Mediterranean",
+    "cooking_time": 10,
+    "servings": 1,
+    "difficulty": "Hard",
+    "description": "Classic French-style omelette: pale yellow exterior, creamy custardy center",
+    "ingredients": ["eggs", "butter", "salt", "pepper", "chives", "gruyere cheese"],
+    "steps": [
+      "Whisk 3 eggs vigorously with salt until completely homogeneous.",
+      "Heat butter in a non-stick pan over medium-high heat until foaming subsides.",
+      "Pour in eggs. Immediately start stirring with a fork while shaking the pan.",
+      "When eggs are mostly set but still creamy on top, stop stirring.",
+      "Add cheese and chives to one side.",
+      "Tilt the pan and fold the omelette onto itself.",
+      "Roll out onto a warm plate, seam-side down. Brush with butter for shine."
+    ],
+    "tips": "A perfect French omelette has NO color — pale yellow only. The inside should be baveuse (creamy, like soft curds).",
+    "nutrition": {"calories": 320, "protein": 22, "fat": 25, "carbs": 1, "fiber": 0}
+  },
+  {
+    "name": "Sweet Potato and Black Bean Burrito Bowl",
+    "cuisine": "Mexican",
+    "cooking_time": 30,
+    "servings": 4,
+    "difficulty": "Easy",
+    "description": "Roasted sweet potatoes with black beans, corn, avocado, and lime crema",
+    "ingredients": ["sweet potato", "black beans", "corn", "avocado", "rice", "lime", "cumin", "chili powder", "paprika", "garlic", "cilantro", "sour cream", "salt", "oil"],
+    "steps": [
+      "Cube sweet potatoes, toss with cumin, chili powder, paprika, oil, and salt.",
+      "Roast at 425°F (220°C) for 25 minutes until caramelized.",
+      "Cook rice and season with lime juice and cilantro.",
+      "Warm black beans with garlic and cumin.",
+      "Make lime crema: mix sour cream, lime juice, and salt.",
+      "Assemble bowls: rice, sweet potato, black beans, corn, sliced avocado.",
+      "Drizzle with lime crema and garnish with cilantro."
+    ],
+    "tips": "Spread sweet potatoes in a single layer for maximum caramelization. Don't stir them during roasting.",
+    "nutrition": {"calories": 420, "protein": 14, "fat": 12, "carbs": 68, "fiber": 12}
+  },
+  {
+    "name": "Teriyaki Salmon",
+    "cuisine": "Japanese",
+    "cooking_time": 20,
+    "servings": 2,
+    "difficulty": "Easy",
+    "description": "Pan-seared salmon glazed with homemade teriyaki sauce, served with steamed rice",
+    "ingredients": ["salmon", "soy sauce", "mirin", "sake", "sugar", "ginger", "garlic", "rice", "scallions", "sesame seeds", "oil"],
+    "steps": [
+      "Mix soy sauce, mirin, sake, and sugar in a small saucepan. Simmer until slightly thickened.",
+      "Pat salmon dry and season with salt and pepper.",
+      "Sear salmon skin-side down in a hot oiled pan for 4 minutes.",
+      "Flip and cook 2 more minutes.",
+      "Pour teriyaki sauce into the pan. Baste the salmon for 1 minute.",
+      "Serve over steamed rice.",
+      "Garnish with sliced scallions and sesame seeds."
+    ],
+    "tips": "Start skin-side down for crispy skin. Don't move the fish while searing — let the Maillard reaction work.",
+    "nutrition": {"calories": 450, "protein": 36, "fat": 18, "carbs": 38, "fiber": 1}
+  },
+  {
+    "name": "Caprese Salad",
+    "cuisine": "Italian",
+    "cooking_time": 5,
+    "servings": 4,
+    "difficulty": "Easy",
+    "description": "Simple Italian salad with fresh mozzarella, ripe tomatoes, basil, and balsamic",
+    "ingredients": ["mozzarella cheese", "tomato", "fresh basil", "olive oil", "balsamic vinegar", "salt", "pepper"],
+    "steps": [
+      "Slice fresh mozzarella and tomatoes into equal-thickness rounds.",
+      "Alternate tomato and mozzarella slices on a platter, overlapping slightly.",
+      "Tuck fresh basil leaves between each pair.",
+      "Drizzle generously with extra-virgin olive oil.",
+      "Add a balsamic reduction drizzle.",
+      "Season with flaky salt and freshly cracked pepper.",
+      "Serve immediately at room temperature."
+    ],
+    "tips": "This dish is only as good as its ingredients. Use the best in-season tomatoes, fresh buffalo mozzarella, and quality olive oil.",
+    "nutrition": {"calories": 260, "protein": 14, "fat": 20, "carbs": 6, "fiber": 1}
+  },
+  {
+    "name": "Dal Tadka",
+    "cuisine": "Indian",
+    "cooking_time": 30,
+    "servings": 4,
+    "difficulty": "Easy",
+    "description": "Comfort lentil dal with a sizzling tempering of cumin, garlic, and dried chilies",
+    "ingredients": ["toor dal", "turmeric", "salt", "onion", "tomato", "garlic", "ginger", "green chili", "cumin seeds", "mustard seeds", "dried red chili", "curry leaves", "ghee", "cilantro", "lemon"],
+    "steps": [
+      "Wash and pressure cook toor dal with turmeric, salt, and water until soft (3-4 whistles).",
+      "Mash the dal to a smooth consistency. Adjust water for desired thickness.",
+      "For the tadka: heat ghee in a small pan until very hot.",
+      "Add cumin seeds, mustard seeds, and dried red chili. Let them splutter.",
+      "Add curry leaves, garlic, ginger, and green chili. Sauté 30 seconds.",
+      "Add diced onion and tomato. Cook until tomato is soft.",
+      "Pour the sizzling tadka over the dal. Mix and simmer 5 minutes.",
+      "Garnish with cilantro and a squeeze of lemon. Serve with rice or roti."
+    ],
+    "tips": "The tadka must sizzle when it hits the dal — that's where the magic happens. Use ghee, not oil, for authentic flavor.",
+    "nutrition": {"calories": 220, "protein": 14, "fat": 6, "carbs": 30, "fiber": 8}
+  },
+  {
+    "name": "Grilled Cheese Sandwich",
+    "cuisine": "American",
+    "cooking_time": 10,
+    "servings": 2,
+    "difficulty": "Easy",
+    "description": "The perfect grilled cheese: crispy golden bread with gooey melted cheese",
+    "ingredients": ["bread", "cheddar cheese", "butter", "mustard"],
+    "steps": [
+      "Butter the outside of each bread slice generously.",
+      "Spread a thin layer of mustard on the inside.",
+      "Layer cheese (use a mix for the best melt).",
+      "Cook in a skillet over medium-low heat, covered, for 3-4 minutes per side.",
+      "Press down gently with a spatula.",
+      "The cheese should be fully melted and the bread deep golden brown.",
+      "Cut diagonally and serve immediately."
+    ],
+    "tips": "Low and slow is the secret — medium-low heat lets the cheese melt before the bread burns. Mayo instead of butter makes an even crispier crust.",
+    "nutrition": {"calories": 380, "protein": 16, "fat": 24, "carbs": 28, "fiber": 2}
+  },
+  {
+    "name": "Ramen",
+    "cuisine": "Japanese",
+    "cooking_time": 30,
+    "servings": 2,
+    "difficulty": "Medium",
+    "description": "Rich shoyu ramen with soft-boiled egg, chashu pork, nori, and scallions",
+    "ingredients": ["ramen noodles", "pork", "eggs", "soy sauce", "mirin", "garlic", "ginger", "chicken stock", "sesame oil", "scallions", "nori", "corn", "mushrooms"],
+    "steps": [
+      "Make tare: combine soy sauce, mirin, garlic, and ginger. Simmer 5 minutes.",
+      "Simmer pork belly in the tare for 20 minutes. Slice for chashu.",
+      "Soft-boil eggs (6 min 30 sec), peel, and marinate in leftover tare.",
+      "Heat chicken stock and add 2-3 tablespoons of tare to each bowl.",
+      "Cook ramen noodles according to package. Don't overcook!",
+      "Place noodles in the broth.",
+      "Top with chashu slices, halved marinated egg, corn, nori, mushrooms, and scallions.",
+      "Drizzle with sesame oil. Serve immediately — ramen waits for no one!"
+    ],
+    "tips": "The tare (seasoning concentrate) is the soul of ramen. Make extra and store it — it keeps for weeks in the fridge.",
+    "nutrition": {"calories": 550, "protein": 30, "fat": 20, "carbs": 60, "fiber": 3}
+  },
+  {
+    "name": "Overnight Oats",
+    "cuisine": "Healthy",
+    "cooking_time": 5,
+    "servings": 2,
+    "difficulty": "Easy",
+    "description": "No-cook oats soaked overnight with chia seeds, berries, and honey",
+    "ingredients": ["oats", "milk", "yogurt", "chia seeds", "honey", "banana", "berries", "vanilla extract"],
+    "steps": [
+      "Combine oats, milk, yogurt, and chia seeds in a jar.",
+      "Add honey and vanilla extract. Stir well.",
+      "Cover and refrigerate overnight (or at least 6 hours).",
+      "In the morning, stir and adjust consistency with more milk if needed.",
+      "Top with sliced banana, fresh berries, and a drizzle of honey.",
+      "Optional: add nuts, granola, or nut butter for extra texture."
+    ],
+    "tips": "The chia seeds absorb liquid and create a pudding-like texture. Use a 1:1 ratio of oats to liquid for thick oats.",
+    "nutrition": {"calories": 320, "protein": 12, "fat": 8, "carbs": 52, "fiber": 8}
+  },
+  {
+    "name": "Fish Tacos",
+    "cuisine": "Mexican",
+    "cooking_time": 25,
+    "servings": 4,
+    "difficulty": "Easy",
+    "description": "Crispy battered fish in corn tortillas with cabbage slaw and chipotle mayo",
+    "ingredients": ["white fish", "flour", "beer", "cabbage", "lime", "cilantro", "corn tortillas", "mayonnaise", "chipotle", "garlic", "cumin", "oil", "salt"],
+    "steps": [
+      "Make chipotle mayo: blend mayonnaise, chipotle peppers, lime juice, and garlic.",
+      "Make slaw: toss shredded cabbage with lime juice, cilantro, and salt.",
+      "Make batter: whisk flour, beer, cumin, and salt until smooth.",
+      "Cut fish into strips. Season with salt and cumin.",
+      "Dip fish in batter and fry at 375°F until golden and crispy (3-4 minutes).",
+      "Warm corn tortillas on a dry skillet.",
+      "Assemble: tortilla, slaw, crispy fish, chipotle mayo, and a squeeze of lime."
+    ],
+    "tips": "Use a light, flaky white fish like cod or mahi-mahi. The beer batter should be the consistency of thin pancake batter.",
+    "nutrition": {"calories": 380, "protein": 24, "fat": 16, "carbs": 36, "fiber": 4}
+  }
+]

@@ -2,16 +2,19 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
 serve(async (req) => {
-  if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
+  if (req.method === "OPTIONS")
+    return new Response(null, { headers: corsHeaders });
 
   try {
     const { imageBase64, voiceIngredients } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY not configured");
+    if (!LOVABLE_API_KEY)
+      throw new Error("LOVABLE_API_KEY not configured");
 
     const messages: any[] = [
       {
@@ -28,53 +31,15 @@ Schema:
       "category": "vegetable|fruit|protein|dairy|grain|spice|condiment|other"
     }
   ],
-  "recipes": [
-    {
-      "name": "Recipe Name",
-      "cuisine": "Indian|Italian|Chinese|Healthy|Mexican|American|Japanese|Mediterranean",
-      "cookingTime": 15,
-      "servings": 4,
-      "difficulty": "Easy|Medium|Hard",
-      "ingredients": ["ingredient1", "ingredient2"],
-      "missingIngredients": ["missing1"],
-      "matchScore": 0.0-1.0,
-      "instructions": "Brief 1-line summary",
-      "detailedSteps": [
-        "Step 1: Detailed instruction here",
-        "Step 2: Next detailed instruction",
-        "Step 3: Continue with details"
-      ],
-      "tips": "Pro tips for best results",
-      "nutrition": {
-        "calories": 300,
-        "protein": 15,
-        "fat": 10,
-        "carbs": 40,
-        "fiber": 5
-      }
-    }
-  ],
-  "nutritionPerIngredient": [
-    {
-      "name": "ingredient name",
-      "calories": 50,
-      "protein": 3,
-      "fat": 1,
-      "carbs": 10
-    }
-  ]
+  "recipes": [...],
+  "nutritionPerIngredient": [...]
 }
 
 Rules:
-- Detect ALL visible ingredients, even partially visible ones
-- Filter out detections with confidence below 0.4
-- Suggest 4-6 diverse recipes from different cuisines
-- Each recipe MUST have 5-8 detailed step-by-step instructions in detailedSteps
-- Include pro tips for each recipe
-- Include servings count and difficulty level
-- Rank recipes by ingredient match score
-- Be accurate with nutritional estimates
-- If voice ingredients are provided, merge them with detected ingredients`
+- Detect ALL visible ingredients
+- Filter confidence < 0.4
+- Suggest 4-6 recipes
+- Include steps, tips, nutrition`
       }
     ];
 
@@ -85,8 +50,8 @@ Rules:
           {
             type: "text",
             text: voiceIngredients
-              ? `Analyze this food image. The user also mentioned these ingredients by voice: ${voiceIngredients}. Detect all ingredients in the image, merge with voice input, generate a caption, and suggest recipes. Return JSON only.`
-              : "Analyze this food image. Detect all ingredients, generate a caption, and suggest recipes based on what you see. Return JSON only."
+              ? `Analyze image + voice: ${voiceIngredients}`
+              : "Analyze this food image"
           },
           {
             type: "image_url",
@@ -97,66 +62,90 @@ Rules:
     } else if (voiceIngredients) {
       messages.push({
         role: "user",
-        content: `The user has these ingredients: ${voiceIngredients}. Suggest recipes and provide nutritional analysis. Return JSON only.`
+        content: `User has: ${voiceIngredients}`
       });
     } else {
-      return new Response(JSON.stringify({ error: "No image or ingredients provided" }), {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      return new Response(
+        JSON.stringify({ error: "No image or ingredients provided" }),
+        { status: 400, headers: corsHeaders }
+      );
     }
 
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
-        messages,
-        temperature: 0.3,
-      }),
-    });
-
-    if (!response.ok) {
-      if (response.status === 429) {
-        return new Response(JSON.stringify({ error: "Rate limited. Please try again shortly." }), {
-          status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
+    const response = await fetch(
+      "https://ai.gateway.lovable.dev/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${LOVABLE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "google/gemini-2.5-flash",
+          messages,
+          temperature: 0.3,
+        }),
       }
-      if (response.status === 402) {
-        return new Response(JSON.stringify({ error: "AI credits exhausted. Please add funds." }), {
-          status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
-      }
-      const t = await response.text();
-      console.error("AI error:", response.status, t);
-      throw new Error("AI gateway error");
-    }
+    );
 
     const data = await response.json();
     let content = data.choices?.[0]?.message?.content || "";
-    
-    // Strip markdown code blocks if present
-    content = content.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
-    
+
+    content = content.replace(/```json/g, "").replace(/```/g, "").trim();
+
     let parsed;
     try {
       parsed = JSON.parse(content);
     } catch {
-      console.error("Failed to parse AI response:", content);
-      throw new Error("Invalid AI response format");
+      throw new Error("Invalid AI response");
     }
+
+    // ===============================
+    // 🔥 HYBRID AI LOGIC (CLIP + BLIP STYLE)
+    // ===============================
+
+    const apiIngredients =
+      parsed.ingredients?.map((i: any) => i.name) || [];
+
+    // 🔹 Simulated CLIP (top confident items)
+    const clipIngredients = apiIngredients.slice(0, 2);
+
+    // 🔹 BLIP-style (from caption)
+    const caption = parsed.caption?.toLowerCase() || "";
+    const keywords = [
+      "bread",
+      "tomato",
+      "cheese",
+      "onion",
+      "egg",
+      "rice",
+      "chicken",
+      "potato"
+    ];
+
+    const blipIngredients = keywords.filter((k) =>
+      caption.includes(k)
+    );
+
+    // 🔹 Final fusion
+    const finalIngredients = Array.from(
+      new Set([...apiIngredients, ...clipIngredients, ...blipIngredients])
+    );
+
+    // 🔹 Attach hybrid output
+    parsed.hybrid = {
+      apiIngredients,
+      clipIngredients,
+      blipIngredients,
+      finalIngredients
+    };
 
     return new Response(JSON.stringify(parsed), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (e) {
-    console.error("analyze-food error:", e);
-    return new Response(JSON.stringify({ error: e instanceof Error ? e.message : "Unknown error" }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({ error: e instanceof Error ? e.message : "Error" }),
+      { status: 500, headers: corsHeaders }
+    );
   }
 });

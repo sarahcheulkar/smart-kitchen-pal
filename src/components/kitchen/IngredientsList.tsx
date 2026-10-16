@@ -53,6 +53,11 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
               <span className={`text-xs font-semibold ${veg ? "text-neon-green" : "text-neon-orange"}`}>
                 {Math.round(ing.confidence * 100)}%
               </span>
+              {ing.source && (
+                <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-muted/50 text-muted-foreground border border-border/30 ml-auto">
+                  {ing.source}
+                </span>
+              )}
             </div>
           );
         })}
