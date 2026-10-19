@@ -5,10 +5,18 @@ interface IngredientsListProps {
   ingredients: Ingredient[];
 }
 
-const nonVegCategories = ["protein", "dairy"];
+const nonVegKeywords = [
+  "beef", "chicken", "turkey", "pork", "meat", "fish", "salmon",
+  "tuna", "shrimp", "lamb", "mutton", "sausage", "bacon", "broth",
+  "bone", "egg", "eggs", "duck", "veal", "ham", "seafood"
+];
 
-function isVeg(category: string): boolean {
-  return !nonVegCategories.includes(category);
+function isVeg(name: string, category: string): boolean {
+  const lowerName = name.toLowerCase();
+  if (nonVegKeywords.some(keyword => lowerName.includes(keyword))) {
+    return false;
+  }
+  return category !== "protein";
 }
 
 export function IngredientsList({ ingredients }: IngredientsListProps) {
@@ -33,7 +41,7 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
 
       <div className="flex flex-wrap gap-2">
         {ingredients.map((ing, i) => {
-          const veg = isVeg(ing.category);
+          const veg = isVeg(ing.name, ing.category);
           return (
             <div
               key={i}

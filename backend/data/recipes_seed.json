@@ -602,5 +602,42 @@
     ],
     "tips": "Use a light, flaky white fish like cod or mahi-mahi. The beer batter should be the consistency of thin pancake batter.",
     "nutrition": {"calories": 380, "protein": 24, "fat": 16, "carbs": 36, "fiber": 4}
+  },
+  {
+    "name": "One-Pot Cheesy Turkey Rotini Skillet",
+    "cuisine": "American",
+    "cooking_time": 25,
+    "servings": 4,
+    "difficulty": "Easy",
+    "description": "Savory ground turkey and rotini pasta simmered in rich beef bone broth and tomato sauce, enriched with heavy cream and bubbly melted cheddar cheese",
+    "ingredients": ["ground turkey", "rotini pasta", "shredded cheddar cheese", "yellow onion", "tomato sauce", "beef bone broth", "heavy whipping cream", "garlic", "flour", "spices"],
+    "steps": [
+      "In a deep skillet, brown the ground turkey with diced yellow onion over medium heat until cooked through (6-8 minutes).",
+      "Stir in minced garlic, spices (salt, black pepper, paprika, Italian herbs), and a spoonful of flour to lightly coat.",
+      "Pour in the beef bone broth and tomato sauce, scraping up any delicious browned bits from the pan.",
+      "Stir in dry rotini pasta. Bring to a gentle boil, cover with a lid, and simmer on medium-low for 10-12 minutes until pasta is tender.",
+      "Remove lid and stir in the heavy whipping cream until the sauce turns creamy and velvety.",
+      "Sprinkle shredded cheddar cheese over the top, cover for 2 minutes to melt, and serve immediately!"
+    ],
+    "tips": "Cooking pasta directly in bone broth infuses every single bite with rich savory protein and natural starch.",
+    "nutrition": {"calories": 510, "protein": 38, "fat": 22, "carbs": 41, "fiber": 4}
+  },
+  {
+    "name": "Creamy Tomato Turkey Pasta Bake",
+    "cuisine": "Italian",
+    "cooking_time": 30,
+    "servings": 4,
+    "difficulty": "Easy",
+    "description": "Tender rotini pasta and browned ground turkey tossed in a garlic-tomato cream sauce, smothered in melted cheddar cheese",
+    "ingredients": ["rotini pasta", "ground turkey", "shredded cheddar cheese", "tomato sauce", "heavy whipping cream", "yellow onion", "garlic", "beef bone broth", "spices"],
+    "steps": [
+      "Boil rotini pasta until al dente; drain and set aside.",
+      "Sauté ground turkey with diced yellow onion and garlic until browned; season with spices.",
+      "Whisk in beef bone broth, tomato sauce, and heavy cream to form a silky rose cream sauce.",
+      "Combine pasta, turkey, and creamy tomato sauce in a baking dish.",
+      "Top with shredded cheddar cheese and bake at 375°F (190°C) for 12-15 minutes until golden and bubbling."
+    ],
+    "tips": "Let the bake rest for 5 minutes before serving so the sauce sets into a luscious, scoopable pasta casserole.",
+    "nutrition": {"calories": 490, "protein": 36, "fat": 21, "carbs": 40, "fiber": 3}
   }
 ]
