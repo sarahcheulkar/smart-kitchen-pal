@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Header } from "@/components/kitchen/Header";
 import { FloatingParticles } from "@/components/kitchen/FloatingParticles";
 import { ImageUpload } from "@/components/kitchen/ImageUpload";
@@ -11,8 +11,7 @@ import { ShoppingList } from "@/components/kitchen/ShoppingList";
 import { FavoritesSection } from "@/components/kitchen/FavoritesSection";
 import { AnalysisSkeleton } from "@/components/kitchen/AnalysisSkeleton";
 
-// ── New Deep Learning Components ──
-import { PipelineStatus } from "@/components/kitchen/PipelineStatus";
+// ── Deep Learning Components ──
 import { VisionOutputPanel } from "@/components/kitchen/VisionOutputPanel";
 import { WasteTrackerPanel } from "@/components/kitchen/WasteTrackerPanel";
 import { DetectionOverlay } from "@/components/kitchen/DetectionOverlay";
@@ -51,6 +50,12 @@ const Index = () => {
   const removeFromShoppingList = useCallback((item: string) => {
     setShoppingList(prev => prev.filter(i => i !== item));
   }, []);
+
+  useEffect(() => {
+    if (result?.pipeline) {
+      localStorage.setItem("latest_pipeline", JSON.stringify(result.pipeline));
+    }
+  }, [result?.pipeline]);
 
   return (
     <div className="min-h-screen bg-background relative">
@@ -101,12 +106,6 @@ const Index = () => {
         {/* ════════════════════════════════════════════ */}
         {result && !isAnalyzing && (
           <div className="space-y-8">
-
-            {/* ── Pipeline Telemetry ── */}
-            {result.pipeline && (
-              <PipelineStatus pipeline={result.pipeline} />
-            )}
-
             {/* ── Image with Florence-2 Bounding Boxes + Caption ── */}
             <div className="grid lg:grid-cols-2 gap-6">
               <div className="space-y-4">

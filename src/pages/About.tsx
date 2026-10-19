@@ -1,5 +1,8 @@
+import { useState, useEffect } from "react";
 import { ArrowLeft, Brain, Eye, Cpu, ImageIcon, MessageSquare, Sparkles, BookOpen, Utensils } from "lucide-react";
 import { Link } from "react-router-dom";
+import { PipelineStatus } from "@/components/kitchen/PipelineStatus";
+import { PipelineInfo } from "@/types/kitchen";
 
 const concepts = [
   {
@@ -44,27 +47,47 @@ const concepts = [
   }
 ];
 
-const About = () => (
-  <div className="min-h-screen bg-background relative">
-    <div className="relative z-10 max-w-4xl mx-auto px-4 py-10 space-y-10">
-      <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-        <ArrowLeft className="w-4 h-4" /> Back to Kitchen
-      </Link>
+const About = () => {
+  const [pipelineData, setPipelineData] = useState<PipelineInfo | undefined>(undefined);
 
-      {/* Student Info */}
-      <div className="glass-card rounded-3xl p-8 text-center space-y-2">
-        <h1 className="text-3xl font-display font-bold text-gradient">Smart AI Kitchen Assistant</h1>
-        <p className="text-lg text-foreground font-semibold">Sarah Cheulkar</p>
-        <p className="text-muted-foreground">Roll No: 23102C0060</p>
-      </div>
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("latest_pipeline");
+      if (saved) {
+        setPipelineData(JSON.parse(saved));
+      }
+    } catch {
+      // Ignore parse errors, fallback to default in PipelineStatus
+    }
+  }, []);
 
-      {/* Project Overview */}
-      <div className="glass-card rounded-3xl p-8 space-y-3">
-        <h2 className="text-xl font-display font-bold text-foreground">Project Overview</h2>
-        <p className="text-muted-foreground leading-relaxed">
-          This project demonstrates the application of <span className="text-foreground font-medium">machine vision</span>, <span className="text-foreground font-medium">natural language processing</span>, and <span className="text-foreground font-medium">intelligent recommendation systems</span> in a real-world smart kitchen assistant. Users can upload food images or provide voice input, and the AI detects ingredients, generates captions, suggests recipes, and provides nutritional insights.
-        </p>
-      </div>
+  return (
+    <div className="min-h-screen bg-background relative">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 py-10 space-y-10">
+        <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+          <ArrowLeft className="w-4 h-4" /> Back to Kitchen
+        </Link>
+
+        {/* Student Info */}
+        <div className="glass-card rounded-3xl p-8 text-center space-y-2">
+          <h1 className="text-3xl font-display font-bold text-gradient">Smart AI Kitchen Assistant</h1>
+          <p className="text-lg text-foreground font-semibold">Sarah Cheulkar</p>
+          <p className="text-muted-foreground">Roll No: 23102C0060</p>
+        </div>
+
+        {/* Project Overview */}
+        <div className="glass-card rounded-3xl p-8 space-y-3">
+          <h2 className="text-xl font-display font-bold text-foreground">Project Overview</h2>
+          <p className="text-muted-foreground leading-relaxed">
+            This project demonstrates the application of <span className="text-foreground font-medium">machine vision</span>, <span className="text-foreground font-medium">natural language processing</span>, and <span className="text-foreground font-medium">intelligent recommendation systems</span> in a real-world smart kitchen assistant. Users can upload food images or provide voice input, and the AI detects ingredients, generates captions, suggests recipes, and provides nutritional insights.
+          </p>
+        </div>
+
+        {/* Deep Learning Pipeline Architecture */}
+        <div className="space-y-4">
+          <h2 className="text-xl font-display font-bold text-foreground">Deep Learning Pipeline Architecture</h2>
+          <PipelineStatus pipeline={pipelineData} />
+        </div>
 
       {/* Concepts */}
       <div className="space-y-4">
