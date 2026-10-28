@@ -15,7 +15,7 @@ const featureModels = [
     icon: BookOpen,
     feature: "Recipe Retrieval & Semantic Matching",
     model: "Dense Semantic RAG (ChromaDB + all-MiniLM-L6-v2)",
-    description: "32+ recipes embedded into a ChromaDB vector database using 384-dimensional dense sentence embeddings and cosine similarity. Enhanced with token-level lemmatization and alias clustering (are_ingredients_matching) to guarantee a 100% match with zero missing ingredients."
+    description: "10,000+ recipes indexed from Recipe1M+ into a ChromaDB vector database using 384-dimensional dense sentence embeddings and cosine similarity. Enhanced with token-level lemmatization and alias clustering (are_ingredients_matching) to guarantee a 100% match with zero missing ingredients."
   },
   {
     icon: Utensils,
