@@ -1,5 +1,8 @@
 # Smart Kitchen Pal — Academic Viva & Presentation Defense Guide
-**Candidate:** Sarah Cheulkar | **Roll No:** 23102C0060  
+**Project Team:**
+- **Sarah Cheulkar** (Roll No: 23102C0060)
+- **Shreyas Shetty** (Roll No: 23102C0047)
+- **Shruti Gupta** (Roll No: 23102C0051)  
 **Project:** Smart Kitchen Pal — Multimodal Hybrid Deep Learning Vision Ensemble & Dense Semantic RAG Assistant
 
 ---

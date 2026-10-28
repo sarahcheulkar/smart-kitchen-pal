@@ -76,11 +76,24 @@ const About = () => {
           <ArrowLeft className="w-4 h-4" /> Back to Kitchen
         </Link>
 
-        {/* Student Info */}
-        <div className="glass-card rounded-3xl p-8 text-center space-y-2">
+        {/* Project Team Info */}
+        <div className="glass-card rounded-3xl p-8 text-center space-y-4">
           <h1 className="text-3xl font-display font-bold text-gradient">Smart AI Kitchen Assistant</h1>
-          <p className="text-lg text-foreground font-semibold">Sarah Cheulkar</p>
-          <p className="text-muted-foreground">Roll No: 23102C0060</p>
+          <p className="text-xs uppercase tracking-wider font-semibold text-primary">Project Team Members</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+            <div className="p-4 rounded-2xl bg-secondary/50 border border-border/60 hover:border-primary/40 transition-colors">
+              <p className="font-semibold text-foreground text-sm">Sarah Cheulkar</p>
+              <p className="text-xs font-mono text-muted-foreground mt-1">Roll No: 23102C0060</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-secondary/50 border border-border/60 hover:border-primary/40 transition-colors">
+              <p className="font-semibold text-foreground text-sm">Shreyas Shetty</p>
+              <p className="text-xs font-mono text-muted-foreground mt-1">Roll No: 23102C0047</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-secondary/50 border border-border/60 hover:border-primary/40 transition-colors">
+              <p className="font-semibold text-foreground text-sm">Shruti Gupta</p>
+              <p className="text-xs font-mono text-muted-foreground mt-1">Roll No: 23102C0051</p>
+            </div>
+          </div>
         </div>
 
         {/* Project Overview */}
