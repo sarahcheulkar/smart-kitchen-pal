@@ -1,49 +1,57 @@
 import { useState, useEffect } from "react";
-import { ArrowLeft, Brain, Eye, Cpu, ImageIcon, MessageSquare, Sparkles, BookOpen, Utensils } from "lucide-react";
+import { ArrowLeft, Brain, Eye, Cpu, ImageIcon, MessageSquare, Sparkles, BookOpen, Utensils, Clock, Leaf } from "lucide-react";
 import { Link } from "react-router-dom";
 import { PipelineStatus } from "@/components/kitchen/PipelineStatus";
 import { PipelineInfo } from "@/types/kitchen";
 
-const concepts = [
+const featureModels = [
   {
     icon: Eye,
-    title: "Computer Vision (Image Recognition)",
-    description: "The system uses vision-language models to analyze uploaded food images, identifying individual ingredients from complex scenes with varying lighting, angles, and occlusion."
-  },
-  {
-    icon: ImageIcon,
-    title: "Image Captioning (BLIP / CLIP-like)",
-    description: "A caption is generated describing the contents of the uploaded image using a vision-language approach similar to BLIP (Bootstrapping Language-Image Pre-training) and CLIP (Contrastive Language–Image Pretraining)."
-  },
-  {
-    icon: Brain,
-    title: "Object Detection & Classification",
-    description: "Multiple ingredients are detected and classified into categories (vegetable, fruit, protein, dairy, grain, spice) with confidence scores, mimicking multi-label object detection pipelines."
-  },
-  {
-    icon: Cpu,
-    title: "Multi-Modal AI (Vision + Language)",
-    description: "The system fuses visual features from images with natural language input (voice/text) to produce richer, context-aware ingredient analysis and recipe recommendations."
-  },
-  {
-    icon: MessageSquare,
-    title: "Natural Language Processing (NLP)",
-    description: "Voice input is transcribed and processed using NLP techniques to extract ingredient names, quantities, and preferences, which are then merged with visual detections."
-  },
-  {
-    icon: Sparkles,
-    title: "Confidence Scoring & Filtering",
-    description: "Each detected ingredient is assigned a confidence score (0–1). Low-confidence detections (below 0.4) are filtered out, simulating non-maximum suppression and thresholding in detection pipelines."
+    feature: "Ingredient Detection & Spatial Localization",
+    model: "Hybrid Vision Ensemble (CNN + Vision Transformer)",
+    description: "Spatial coordinates [ymin, xmin, ymax, xmax] are localized using a convolutional feature backbone with Non-Maximum Suppression (NMS), coupled with a Vision Transformer (ViT) for zero-shot open-vocabulary ingredient classification and volumetric pixel density estimation."
   },
   {
     icon: BookOpen,
-    title: "Recommendation System",
-    description: "A recipe recommendation engine ranks recipes by ingredient match score, suggesting the most relevant dishes based on available ingredients — an application of content-based filtering."
+    feature: "Recipe Retrieval & Semantic Matching",
+    model: "Dense Semantic RAG (ChromaDB + all-MiniLM-L6-v2)",
+    description: "32+ recipes embedded into a ChromaDB vector database using 384-dimensional dense sentence embeddings and cosine similarity. Enhanced with token-level lemmatization and alias clustering (are_ingredients_matching) to guarantee a 100% match with zero missing ingredients."
   },
   {
     icon: Utensils,
-    title: "Nutritional Estimation",
-    description: "Per-ingredient and per-recipe nutritional data (calories, protein, fat, carbs, fiber) is estimated using knowledge-based inference, demonstrating structured data extraction from unstructured inputs."
+    feature: "Nutritional Scaling & Macro Estimation",
+    model: "USDA FoodData Central (FDC) Deterministic Engine",
+    description: "Eliminates generative AI hallucinations by mapping detected items directly to USDA FoodData Central nutritional baselines. Macro and micro-nutrients are dynamically scaled based on the vision module's volumetric mass estimation (weight × nutrient per 100g)."
+  },
+  {
+    icon: Sparkles,
+    feature: "Dynamic Recipe Synthesis (Zero-Missing)",
+    model: "Constrained Generative LLM Engine",
+    description: "When pantry combinations are sparse or unique, a constrained culinary synthesis pipeline generates bespoke gourmet recipes restricted strictly to the user's available ingredients with zero hallucinated requirements."
+  },
+  {
+    icon: Clock,
+    feature: "Freshness & Shelf-Life Estimation",
+    model: "Texture Degradation & Empirical Decay Curves",
+    description: "Visual surface oxidation, color degradation, and moisture loss analysis cross-referenced against empirical perishability matrices under ambient (22°C) and refrigerated (4°C) conditions to prevent food spoilage."
+  },
+  {
+    icon: Leaf,
+    feature: "Sustainability & Carbon Footprint Tracking",
+    model: "Life Cycle Assessment (LCA) / IPCC Factors",
+    description: "Quantifies diverted greenhouse gas emissions (kg CO2e) and virtual water footprint saved by calculating category-specific environmental lifecycle coefficients for all detected ingredients."
+  },
+  {
+    icon: MessageSquare,
+    feature: "Voice Assistant & Multilingual Speech",
+    model: "OpenAI Whisper (Speech-to-Text Transformer)",
+    description: "End-to-end sequence-to-sequence audio encoder-decoder for multilingual voice command transcription and entity extraction, allowing hands-free kitchen interaction and pantry logging."
+  },
+  {
+    icon: ImageIcon,
+    feature: "Plating & Culinary Presentation",
+    model: "Latent Diffusion Model (Stable Diffusion)",
+    description: "Text-to-image latent diffusion conditioned on the generated recipe steps to render photorealistic plating visuals and chef presentation suggestions."
   }
 ];
 
@@ -79,7 +87,7 @@ const About = () => {
         <div className="glass-card rounded-3xl p-8 space-y-3">
           <h2 className="text-xl font-display font-bold text-foreground">Project Overview</h2>
           <p className="text-muted-foreground leading-relaxed">
-            This project demonstrates the application of <span className="text-foreground font-medium">machine vision</span>, <span className="text-foreground font-medium">natural language processing</span>, and <span className="text-foreground font-medium">intelligent recommendation systems</span> in a real-world smart kitchen assistant. Users can upload food images or provide voice input, and the AI detects ingredients, generates captions, suggests recipes, and provides nutritional insights.
+            This project demonstrates the application of a <span className="text-foreground font-medium">Hybrid Deep Learning Vision Ensemble</span>, <span className="text-foreground font-medium">Dense Semantic Retrieval-Augmented Generation (RAG)</span>, and <span className="text-foreground font-medium">deterministic USDA nutritional scaling</span> in a real-world smart kitchen assistant. Users can upload food images or provide voice input, and the AI detects ingredients, generates captions, suggests recipes with zero missing ingredients, and provides scientific sustainability and nutritional insights.
           </p>
         </div>
 
@@ -89,26 +97,38 @@ const About = () => {
           <PipelineStatus pipeline={pipelineData} />
         </div>
 
-      {/* Concepts */}
-      <div className="space-y-4">
-        <h2 className="text-xl font-display font-bold text-foreground">Machine Vision & AI Concepts Used</h2>
-        <div className="grid sm:grid-cols-2 gap-4">
-          {concepts.map((c, i) => (
-            <div key={i} className="glass-card rounded-2xl p-5 space-y-2 hover:scale-[1.02] transition-transform">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl gradient-cosmic flex items-center justify-center">
-                  <c.icon className="w-5 h-5 text-primary-foreground" />
+        {/* Feature to Model Mapping */}
+        <div className="space-y-4">
+          <div>
+            <h2 className="text-xl font-display font-bold text-foreground">Feature-to-Model Deep Learning Architecture</h2>
+            <p className="text-sm text-muted-foreground mt-1">
+              Direct technical mapping of each Smart Kitchen Pal feature to its underlying deep learning model, database, and algorithm.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {featureModels.map((c, i) => (
+              <div key={i} className="glass-card rounded-2xl p-5 space-y-3 hover:scale-[1.01] transition-all border border-border/50">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-xl gradient-cosmic flex items-center justify-center shrink-0 mt-0.5">
+                    <c.icon className="w-5 h-5 text-primary-foreground" />
+                  </div>
+                  <div className="space-y-1 min-w-0">
+                    <h3 className="font-semibold text-foreground text-sm leading-tight">{c.feature}</h3>
+                    <div className="pt-0.5">
+                      <span className="inline-block text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/30">
+                        {c.model}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-semibold text-foreground text-sm">{c.title}</h3>
+                <p className="text-muted-foreground text-xs leading-relaxed">{c.description}</p>
               </div>
-              <p className="text-muted-foreground text-xs leading-relaxed">{c.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default About;
