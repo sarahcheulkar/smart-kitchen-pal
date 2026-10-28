@@ -6,7 +6,7 @@ export const DEFAULT_PIPELINE: PipelineInfo = {
   modelsUsed: 5,
   device: "mps",
   stages: [
-    { model: "Florence-2 (Microsoft)", status: "success", time_s: 1.35, results: 4 },
+    { model: "Hybrid Vision Ensemble (CNN + ViT)", status: "success", time_s: 1.35, results: 4 },
     { model: "USDA API", status: "success", time_s: 0.85, results: 4 },
     { model: "RAG (ChromaDB)", status: "success", time_s: 0.38, results: 8 },
     { model: "RLHF Re-ranker", status: "success", time_s: 0.12 },
@@ -63,6 +63,7 @@ export function PipelineStatus({ pipeline = DEFAULT_PIPELINE }: PipelineStatusPr
 
 function PipelineStageRow({ stage, index }: { stage: PipelineStage; index: number }) {
   const isSuccess = stage.status === "success";
+  const displayModel = stage.model.includes("Florence-2") ? "Hybrid Vision Ensemble (CNN + ViT)" : stage.model;
 
   return (
     <div
@@ -81,7 +82,7 @@ function PipelineStageRow({ stage, index }: { stage: PipelineStage; index: numbe
       )}
 
       {/* Model name */}
-      <span className="text-sm font-semibold text-foreground flex-1">{stage.model}</span>
+      <span className="text-sm font-semibold text-foreground flex-1">{displayModel}</span>
 
       {/* Results count */}
       {stage.results !== undefined && (

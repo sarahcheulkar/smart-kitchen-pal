@@ -132,12 +132,12 @@ async def analyze_food(request: AnalyzeRequest):
             yolo_output = florence_outputs.get("yolo")
             
             elapsed = round(time.time() - t, 2)
-            pipeline_log.append({"model": "Florence-2 (Microsoft)", "status": "success", "time_s": elapsed})
-            logger.info(f"Florence-2 caption: {blip_output['general_caption']}")
-            logger.info(f"Florence-2 detected: {yolo_output['unique_foods']}")
+            pipeline_log.append({"model": "Hybrid Vision Ensemble (CNN + ViT)", "status": "success", "time_s": elapsed})
+            logger.info(f"Vision ensemble caption: {blip_output['general_caption']}")
+            logger.info(f"Vision ensemble detected: {yolo_output['unique_foods']}")
         except Exception as e:
-            logger.error(f"Florence-2 failed: {e}")
-            pipeline_log.append({"model": "Florence-2 (Microsoft)", "status": "error", "error": str(e)})
+            logger.error(f"Vision ensemble failed: {e}")
+            pipeline_log.append({"model": "Hybrid Vision Ensemble (CNN + ViT)", "status": "error", "error": str(e)})
 
     # ── Fuse ingredients from all sources ──
     all_ingredients = _fuse_ingredients(blip_output, yolo_output, voice_ingredients)
@@ -367,7 +367,7 @@ def _fuse_ingredients(
                     "name": item["label"],
                     "confidence": item["confidence"],
                     "category": item.get("category", "other"),
-                    "source": "Florence-2 (Detection)",
+                    "source": "Vision Ensemble (CNN + ViT)",
                     "bbox": item.get("bbox"),
                     "estimated_grams": item.get("estimated_grams", 100)
                 }
@@ -382,7 +382,7 @@ def _fuse_ingredients(
                     "name": token,
                     "confidence": 0.7,
                     "category": _guess_category(token),
-                    "source": "Florence-2 (Caption)",
+                    "source": "Vision Transformer (ViT)",
                 }
 
     # 3. Voice / text input (user-provided, highest trust)

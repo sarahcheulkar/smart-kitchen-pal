@@ -16,11 +16,11 @@ export function VisionOutputPanel({ blip, yolo }: VisionOutputPanelProps) {
         AI Model Outputs
       </h2>
 
-      {/* Florence-2 Captioning Section */}
+      {/* Vision Transformer Captioning Section */}
       {blip && (
         <div className="space-y-2.5 mb-4">
           <p className="text-xs text-muted-foreground font-semibold uppercase tracking-wider flex items-center gap-1">
-            <Eye className="w-3 h-3 text-neon-purple" /> Florence-2 (Foundation Vision)
+            <Eye className="w-3 h-3 text-neon-purple" /> Vision Transformer (ViT Caption)
           </p>
 
           <VisionField
@@ -55,11 +55,11 @@ export function VisionOutputPanel({ blip, yolo }: VisionOutputPanelProps) {
         </div>
       )}
 
-      {/* Florence-2 Detection Section */}
+      {/* Hybrid Vision Detection Section */}
       {yolo && (
         <div className="space-y-2.5">
           <p className="text-xs text-muted-foreground font-semibold uppercase tracking-wider flex items-center gap-1">
-            <ScanSearch className="w-3 h-3 text-neon-orange" /> Florence-2 (Zero-Shot Detection)
+            <ScanSearch className="w-3 h-3 text-neon-orange" /> Hybrid Vision Ensemble (Zero-Shot Detection)
           </p>
 
           <div className="grid grid-cols-3 gap-2 mb-2">

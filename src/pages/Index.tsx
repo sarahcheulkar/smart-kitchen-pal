@@ -178,7 +178,7 @@ const Index = () => {
             {/* DL Pipeline info */}
             <div className="flex flex-wrap justify-center gap-2 max-w-md mx-auto">
               {[
-                { label: "Florence-2", desc: "Vision & Detection" },
+                { label: "Hybrid Vision", desc: "CNN + ViT Ensemble" },
                 { label: "Whisper", desc: "Audio" },
                 { label: "BGE RAG", desc: "Recipes" },
                 { label: "USDA", desc: "Nutrition" },

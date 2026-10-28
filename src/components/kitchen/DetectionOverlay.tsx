@@ -66,21 +66,21 @@ export function DetectionOverlay({ previewUrl, ingredients }: DetectionOverlayPr
         <div className="absolute bottom-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card/80 backdrop-blur-md border border-border/50 text-xs">
           <span className="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse" />
           <span className="text-foreground font-medium">
-            {bboxIngredients.length} objects detected by Florence-2
+            {bboxIngredients.length} objects localized by Hybrid Vision Ensemble
           </span>
         </div>
       )}
 
       {/* Source badges */}
       <div className="absolute top-3 left-3 flex gap-1">
-        {ingredients.some(i => i.source?.includes("Caption")) && (
+        {ingredients.some(i => i.source?.includes("Caption") || i.source?.includes("Transformer")) && (
           <span className="px-2 py-0.5 rounded-full bg-neon-purple/20 backdrop-blur-md text-neon-purple text-[10px] font-bold border border-neon-purple/30">
-            Florence-2 (Text)
+            Vision Transformer (ViT)
           </span>
         )}
-        {ingredients.some(i => i.source?.includes("Detection")) && (
+        {ingredients.some(i => i.source?.includes("Detection") || i.source?.includes("Ensemble")) && (
           <span className="px-2 py-0.5 rounded-full bg-neon-orange/20 backdrop-blur-md text-neon-orange text-[10px] font-bold border border-neon-orange/30">
-            Florence-2 (Vision)
+            CNN Spatial Backbone
           </span>
         )}
       </div>

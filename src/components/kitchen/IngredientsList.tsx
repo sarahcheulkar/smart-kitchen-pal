@@ -63,7 +63,7 @@ export function IngredientsList({ ingredients }: IngredientsListProps) {
               </span>
               {ing.source && (
                 <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-muted/50 text-muted-foreground border border-border/30 ml-auto">
-                  {ing.source}
+                  {ing.source.replace("Florence-2 (Detection)", "Vision Ensemble (CNN + ViT)").replace("Florence-2", "Vision Ensemble")}
                 </span>
               )}
             </div>
