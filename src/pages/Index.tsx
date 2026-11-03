@@ -15,6 +15,7 @@ import { AnalysisSkeleton } from "@/components/kitchen/AnalysisSkeleton";
 import { VisionOutputPanel } from "@/components/kitchen/VisionOutputPanel";
 import { WasteTrackerPanel } from "@/components/kitchen/WasteTrackerPanel";
 import { DetectionOverlay } from "@/components/kitchen/DetectionOverlay";
+import { FreshnessTrackerPanel } from "@/components/kitchen/FreshnessTrackerPanel";
 
 import { useAnalyzeFood } from "@/hooks/useAnalyzeFood";
 import { useFavorites } from "@/hooks/useFavorites";
@@ -141,6 +142,11 @@ const Index = () => {
               onAddToShoppingList={addToShoppingList}
               onFeedback={sendFeedback}
             />
+
+            {/* ── Freshness & Shelf-Life Estimation ── */}
+            {result.ingredients && result.ingredients.length > 0 && (
+              <FreshnessTrackerPanel ingredients={result.ingredients} />
+            )}
 
             {/* ── Environmental Impact (Waste Tracker) ── */}
             {result.wasteImpact && (
