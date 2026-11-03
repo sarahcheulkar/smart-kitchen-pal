@@ -5,7 +5,7 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
   server: {
-    host: true,
+    host: "::",
     port: 5173,
     hmr: {
       overlay: false,
